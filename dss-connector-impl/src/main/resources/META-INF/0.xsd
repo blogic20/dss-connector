@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://dss.cryptopro.ru/services/2014/06/"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:import schemaLocation="2.xsd"
+               namespace="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    <xs:import schemaLocation="3.xsd"
+               namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+    <xs:element name="EncryptDocument">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="document" nillable="true" type="xs:base64Binary"/>
+                <xs:element minOccurs="0" name="type" type="q1:EncryptionType"
+                            xmlns:q1="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+                <xs:element minOccurs="0" name="certificateIDs" nillable="true" type="q2:ArrayOfbase64Binary"
+                            xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+                <xs:element minOccurs="0" name="additionalParams" nillable="true"
+                            type="q3:ArrayOfKeyValueOfstringstring"
+                            xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="EncryptDocumentResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="EncryptDocumentResult" nillable="true" type="xs:base64Binary"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DecryptDocument">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="encryptedDocument" nillable="true" type="xs:base64Binary"/>
+                <xs:element minOccurs="0" name="type" type="q4:EncryptionType"
+                            xmlns:q4="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+                <xs:element minOccurs="0" name="certificateId" type="xs:int"/>
+                <xs:element minOccurs="0" name="pinCode" nillable="true" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DecryptDocumentResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="DecryptDocumentResult" nillable="true"
+                            type="q5:DSSDecryptDocumentResponse"
+                            xmlns:q5="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetDecryptionCertificates">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="encryptedDocument" nillable="true" type="xs:base64Binary"/>
+                <xs:element minOccurs="0" name="type" type="q6:EncryptionType"
+                            xmlns:q6="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetDecryptionCertificatesResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="GetDecryptionCertificatesResult" nillable="true"
+                            type="q7:DSSDecryptDocumentResponse"
+                            xmlns:q7="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetDSSAuditRecords">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="Request" nillable="true" type="q8:DSSAuditRecordsRequest"
+                            xmlns:q8="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetDSSAuditRecordsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="GetDSSAuditRecordsResult" nillable="true"
+                            type="q9:DSSAuditRecordsResponse"
+                            xmlns:q9="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="SignDocument">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="document" nillable="true" type="xs:base64Binary"/>
+                <xs:element minOccurs="0" name="signatureType" type="q10:SignatureType"
+                            xmlns:q10="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+                <xs:element minOccurs="0" name="certificateId" type="xs:int"/>
+                <xs:element minOccurs="0" name="pinCode" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="signatureParams" nillable="true"
+                            type="q11:ArrayOfKeyValueOfSignatureParamsstring1Iy7z97I"
+                            xmlns:q11="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="SignDocumentResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="SignDocumentResult" nillable="true" type="xs:base64Binary"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="SignDocuments">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="documents" nillable="true" type="q12:ArrayOfbase64Binary"
+                            xmlns:q12="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+                <xs:element minOccurs="0" name="signatureType" type="q13:SignatureType"
+                            xmlns:q13="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+                <xs:element minOccurs="0" name="certificateId" type="xs:int"/>
+                <xs:element minOccurs="0" name="pinCode" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="signatureParams" nillable="true"
+                            type="q14:ArrayOfKeyValueOfSignatureParamsstring1Iy7z97I"
+                            xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="SignDocumentsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="SignDocumentsResult" nillable="true" type="q15:DSSSignDocumentResponse"
+                            xmlns:q15="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetCertificates">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetCertificatesResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="GetCertificatesResult" nillable="true" type="q16:ArrayOfDSSCertificate"
+                            xmlns:q16="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetCertificate">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetCertificateResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="GetCertificateResult" nillable="true" type="q17:DSSCertificate"
+                            xmlns:q17="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="SetCertificateProperty">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="id" type="xs:int"/>
+                <xs:element minOccurs="0" name="status" nillable="true" type="q18:CertificateProperty"
+                            xmlns:q18="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="SetCertificatePropertyResponse">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="SetRequestStatus">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="status" nillable="true" type="q19:RequestStatus"
+                            xmlns:q19="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="SetRequestStatusResponse">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="InstallCertificateBase64">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="base64Certificate" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="pinCode" nillable="true" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="InstallCertificateBase64Response">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="InstallCertificateBase64Result" nillable="true"
+                            type="q20:DSSCertificate" xmlns:q20="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="InstallCertificateDer">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="binaryCertificate" nillable="true" type="xs:base64Binary"/>
+                <xs:element minOccurs="0" name="pinCode" nillable="true" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="InstallCertificateDerResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="InstallCertificateDerResult" nillable="true" type="q21:DSSCertificate"
+                            xmlns:q21="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DeleteCertificate">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DeleteCertificateResponse">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetCertificateContent">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="id" type="xs:int"/>
+                <xs:element minOccurs="0" name="format" type="q22:DSSCertificateFormatEnum"
+                            xmlns:q22="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetCertificateContentResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="GetCertificateContentResult" nillable="true" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="CreateRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="dName" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="ekus" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="pinCode" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="caId" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="CreateRequestResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="CreateRequestResult" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="CreateRequestEx">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="dName" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="pinCode" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="caId" type="xs:int"/>
+                <xs:element minOccurs="0" name="requestParams" nillable="true"
+                            type="q23:ArrayOfKeyValueOfRequestParamsstring1Iy7z97I"
+                            xmlns:q23="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="CreateRequestExResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="CreateRequestExResult" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetRequests">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetRequestsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="GetRequestsResult" nillable="true" type="q24:ArrayOfDSSCertRequest"
+                            xmlns:q24="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetRevokeRequests">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="certId" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetRevokeRequestsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="GetRevokeRequestsResult" nillable="true" type="q25:ArrayOfDSSRevRequest"
+                            xmlns:q25="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DeleteRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DeleteRequestResponse">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetRequestResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="GetRequestResult" nillable="true" type="q26:DSSCertRequest"
+                            xmlns:q26="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetRequestContent">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="requestType" type="q27:CARequestTypeEnum"
+                            xmlns:q27="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+                <xs:element minOccurs="0" name="caId" type="xs:int"/>
+                <xs:element minOccurs="0" name="format" type="q28:DSSCertificateFormatEnum"
+                            xmlns:q28="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetRequestContentResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="GetRequestContentResult" nillable="true" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetTransactionID">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetTransactionIDResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="GetTransactionIDResult" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetPolicy">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetPolicyResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="GetPolicyResult" nillable="true" type="q29:DSSPolicy"
+                            xmlns:q29="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

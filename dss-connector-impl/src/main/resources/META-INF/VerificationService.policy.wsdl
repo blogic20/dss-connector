@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions targetNamespace="http://dss.cryptopro.ru/services/bindings/2014/06/"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:i0="http://dss.cryptopro.ru/services/2015/04/"
+                  xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+                  xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+        >
+    <wsp:Policy wsu:Id="BasicHttpsBinding_IVerificationService_policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+                    <wsp:Policy>
+                        <sp:TransportToken>
+                            <wsp:Policy>
+                                <sp:HttpsToken RequireClientCertificate="false"/>
+                            </wsp:Policy>
+                        </sp:TransportToken>
+                        <sp:AlgorithmSuite>
+                            <wsp:Policy>
+                                <sp:Basic256/>
+                            </wsp:Policy>
+                        </sp:AlgorithmSuite>
+                        <sp:Layout>
+                            <wsp:Policy>
+                                <sp:Strict/>
+                            </wsp:Policy>
+                        </sp:Layout>
+                    </wsp:Policy>
+                </sp:TransportBinding>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsdl:import namespace="http://dss.cryptopro.ru/services/2015/04/"
+                 location="VerificationService.wsdl"/>
+    <wsdl:types/>
+    <wsdl:binding name="BasicHttpBinding_IVerificationService" type="i0:IVerificationService">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="GetSignersInfo">
+            <soap:operation soapAction="http://dss.cryptopro.ru/services/2015/04/IVerificationService/GetSignersInfo"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DssFaultFault">
+                <soap:fault name="DssFaultFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="VerifySignature">
+            <soap:operation soapAction="http://dss.cryptopro.ru/services/2015/04/IVerificationService/VerifySignature"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DssFaultFault">
+                <soap:fault name="DssFaultFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="VerifySignatureAll">
+            <soap:operation
+                    soapAction="http://dss.cryptopro.ru/services/2015/04/IVerificationService/VerifySignatureAll"
+                    style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DssFaultFault">
+                <soap:fault name="DssFaultFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="VerifyDetachedSignature">
+            <soap:operation
+                    soapAction="http://dss.cryptopro.ru/services/2015/04/IVerificationService/VerifyDetachedSignature"
+                    style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DssFaultFault">
+                <soap:fault name="DssFaultFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="VerifyDetachedSignatureAll">
+            <soap:operation
+                    soapAction="http://dss.cryptopro.ru/services/2015/04/IVerificationService/VerifyDetachedSignatureAll"
+                    style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DssFaultFault">
+                <soap:fault name="DssFaultFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="VerifyGost34102001">
+            <soap:operation
+                    soapAction="http://dss.cryptopro.ru/services/2015/04/IVerificationService/VerifyGost34102001"
+                    style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DssFaultFault">
+                <soap:fault name="DssFaultFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="VerifyCertificate">
+            <soap:operation soapAction="http://dss.cryptopro.ru/services/2015/04/IVerificationService/VerifyCertificate"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DssFaultFault">
+                <soap:fault name="DssFaultFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="GetPolicy">
+            <soap:operation soapAction="http://dss.cryptopro.ru/services/2015/04/IVerificationService/GetPolicy"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DssFaultFault">
+                <soap:fault name="DssFaultFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="BasicHttpsBinding_IVerificationService" type="i0:IVerificationService">
+        <wsp:PolicyReference URI="#BasicHttpsBinding_IVerificationService_policy"/>
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="GetSignersInfo">
+            <soap:operation soapAction="http://dss.cryptopro.ru/services/2015/04/IVerificationService/GetSignersInfo"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DssFaultFault">
+                <soap:fault name="DssFaultFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="VerifySignature">
+            <soap:operation soapAction="http://dss.cryptopro.ru/services/2015/04/IVerificationService/VerifySignature"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DssFaultFault">
+                <soap:fault name="DssFaultFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="VerifySignatureAll">
+            <soap:operation
+                    soapAction="http://dss.cryptopro.ru/services/2015/04/IVerificationService/VerifySignatureAll"
+                    style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DssFaultFault">
+                <soap:fault name="DssFaultFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="VerifyDetachedSignature">
+            <soap:operation
+                    soapAction="http://dss.cryptopro.ru/services/2015/04/IVerificationService/VerifyDetachedSignature"
+                    style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DssFaultFault">
+                <soap:fault name="DssFaultFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="VerifyDetachedSignatureAll">
+            <soap:operation
+                    soapAction="http://dss.cryptopro.ru/services/2015/04/IVerificationService/VerifyDetachedSignatureAll"
+                    style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DssFaultFault">
+                <soap:fault name="DssFaultFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="VerifyGost34102001">
+            <soap:operation
+                    soapAction="http://dss.cryptopro.ru/services/2015/04/IVerificationService/VerifyGost34102001"
+                    style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DssFaultFault">
+                <soap:fault name="DssFaultFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="VerifyCertificate">
+            <soap:operation soapAction="http://dss.cryptopro.ru/services/2015/04/IVerificationService/VerifyCertificate"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DssFaultFault">
+                <soap:fault name="DssFaultFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="GetPolicy">
+            <soap:operation soapAction="http://dss.cryptopro.ru/services/2015/04/IVerificationService/GetPolicy"
+                            style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DssFaultFault">
+                <soap:fault name="DssFaultFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+</wsdl:definitions>

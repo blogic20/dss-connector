@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://dss.cryptopro.ru/services/schemas/2014/06/"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://dss.cryptopro.ru/services/schemas/2014/06/">
+    <xs:simpleType name="MfaPolicy">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Off"/>
+            <xs:enumeration value="On"/>
+            <xs:enumeration value="NotSet"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="MfaPolicy" nillable="true" type="tns:MfaPolicy"/>
+    <xs:simpleType name="DSSActions">
+        <xs:list>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="Issue"/>
+                    <xs:enumeration value="SignDocument"/>
+                    <xs:enumeration value="SignDocuments"/>
+                    <xs:enumeration value="DecryptDocument"/>
+                    <xs:enumeration value="CreateRequest"/>
+                    <xs:enumeration value="ChangePin"/>
+                    <xs:enumeration value="RenewCertificate"/>
+                    <xs:enumeration value="RevokeCertificate"/>
+                    <xs:enumeration value="HoldCertificate"/>
+                    <xs:enumeration value="UnholdCertificate"/>
+                    <xs:enumeration value="DeleteCertificate"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:list>
+    </xs:simpleType>
+    <xs:element name="DSSActions" nillable="true" type="tns:DSSActions"/>
+    <xs:complexType name="DssFault">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="DssFault" nillable="true" type="tns:DssFault"/>
+    <xs:complexType name="ArrayOfDSSActions">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="DSSActions" type="tns:DSSActions"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfDSSActions" nillable="true" type="tns:ArrayOfDSSActions"/>
+</xs:schema>

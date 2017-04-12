@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://dss.cryptopro.ru/services/2015/12/"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:import schemaLocation="UserManagement.2.xsd"
+               namespace="http://schemas.datacontract.org/2004/07/CryptoPro.DSS.Common.UserManagementService"/>
+    <xs:import schemaLocation="UserManagement.4.xsd"
+               namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+    <xs:import schemaLocation="UserManagement.3.xsd" namespace="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    <xs:import schemaLocation="UserManagement.5.xsd"
+               namespace="http://schemas.datacontract.org/2004/07/CryptoPro.DSS.Common.UserManagementService.Filtration"/>
+    <xs:element name="GetPolicy">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetPolicyResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="GetPolicyResult" nillable="true" type="q1:UmsPolicy"
+                            xmlns:q1="http://schemas.datacontract.org/2004/07/CryptoPro.DSS.Common.UserManagementService"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="RegisterUser">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="identifiers" nillable="true"
+                            type="q2:ArrayOfKeyValueOfIdentifierTypestringMJV4w3gm"
+                            xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="RegisterUserResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="RegisterUserResult" nillable="true" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="AddExternalLogin">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="login" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="issuerName" nillable="true" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="AddExternalLoginResponse">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetUser">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="type" type="q3:IdentifierType"
+                            xmlns:q3="http://schemas.datacontract.org/2004/07/CryptoPro.DSS.Common.UserManagementService"/>
+                <xs:element minOccurs="0" name="identifierValue" nillable="true" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetUserResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="GetUserResult" nillable="true" type="q4:DssUserInfo"
+                            xmlns:q4="http://schemas.datacontract.org/2004/07/CryptoPro.DSS.Common.UserManagementService"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetUserById">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetUserByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="GetUserByIdResult" nillable="true" type="q5:DssUserInfo"
+                            xmlns:q5="http://schemas.datacontract.org/2004/07/CryptoPro.DSS.Common.UserManagementService"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="SetUserPhoneNumber">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="phoneNumber" nillable="true" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="SetUserPhoneNumberResponse">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="SetUserSimAuthToken">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="iccid" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="profileId" nillable="true" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="SetUserSimAuthTokenResponse">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="SetUserOtpToken">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="serial" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="firstOtp" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="secondOtp" nillable="true" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="SetUserOtpTokenResponse">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="AssignAuthenticationMethod">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="methodUri" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="level" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="AssignAuthenticationMethodResponse">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="RemoveAuthenticationMethod">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="methodUri" nillable="true" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="RemoveAuthenticationMethodResponse">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetUserAuthenticationScheme">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetUserAuthenticationSchemeResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="GetUserAuthenticationSchemeResult" nillable="true"
+                            type="q6:ArrayOfAuthenticationInfo"
+                            xmlns:q6="http://schemas.datacontract.org/2004/07/CryptoPro.DSS.Common.UserManagementService"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DeleteUser">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DeleteUserResponse">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="SetUserGroup">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="groupName" nillable="true" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="SetUserGroupResponse">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetUserOperationPolicy">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetUserOperationPolicyResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="GetUserOperationPolicyResult" nillable="true"
+                            type="q7:ArrayOfOperationPolicy"
+                            xmlns:q7="http://schemas.datacontract.org/2004/07/CryptoPro.DSS.Common.UserManagementService"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="SetUserOperationPolicy">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="operations" nillable="true" type="q8:ArrayOfDSSActions"
+                            xmlns:q8="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="SetUserOperationPolicyResponse">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="SetUserProperty">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="property" nillable="true" type="q9:UserProperty"
+                            xmlns:q9="http://schemas.datacontract.org/2004/07/CryptoPro.DSS.Common.UserManagementService"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="SetUserPropertyResponse">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetUsers">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="request" nillable="true" type="q10:UserRecordsRequest"
+                            xmlns:q10="http://schemas.datacontract.org/2004/07/CryptoPro.DSS.Common.UserManagementService.Filtration"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetUsersResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="GetUsersResult" nillable="true" type="q11:UserRecordsResponse"
+                            xmlns:q11="http://schemas.datacontract.org/2004/07/CryptoPro.DSS.Common.UserManagementService.Filtration"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ResetPassword">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ResetPasswordResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="ResetPasswordResult" nillable="true" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="SetUserDistinguishName">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="components" nillable="true" type="q12:ArrayOfKeyValueOfintstring"
+                            xmlns:q12="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="SetUserDistinguishNameResponse">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

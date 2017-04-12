@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="VerificationService" targetNamespace="http://dss.cryptopro.ru/services/2015/04/"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:i0="http://dss.cryptopro.ru/services/bindings/2014/06/"
+                  xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://dss.cryptopro.ru/services/2015/04/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+        >
+    <wsdl:import namespace="http://dss.cryptopro.ru/services/bindings/2014/06/"
+                 location="VerificationService.policy.wsdl"/>
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://dss.cryptopro.ru/services/2015/04/Imports">
+            <xsd:import schemaLocation="4.xsd"
+                        namespace="http://dss.cryptopro.ru/services/2015/04/"/>
+            <xsd:import schemaLocation="2.xsd"
+                        namespace="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+            <xsd:import schemaLocation="1.xsd"
+                        namespace="http://schemas.microsoft.com/2003/10/Serialization/"/>
+            <xsd:import schemaLocation="3.xsd"
+                        namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="IVerificationService_GetSignersInfo_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetSignersInfo"/>
+    </wsdl:message>
+    <wsdl:message name="IVerificationService_GetSignersInfo_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetSignersInfoResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IVerificationService_GetSignersInfo_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q1:DssFault" xmlns:q1="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="IVerificationService_VerifySignature_InputMessage">
+        <wsdl:part name="parameters" element="tns:VerifySignature"/>
+    </wsdl:message>
+    <wsdl:message name="IVerificationService_VerifySignature_OutputMessage">
+        <wsdl:part name="parameters" element="tns:VerifySignatureResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IVerificationService_VerifySignature_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q2:DssFault" xmlns:q2="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="IVerificationService_VerifySignatureAll_InputMessage">
+        <wsdl:part name="parameters" element="tns:VerifySignatureAll"/>
+    </wsdl:message>
+    <wsdl:message name="IVerificationService_VerifySignatureAll_OutputMessage">
+        <wsdl:part name="parameters" element="tns:VerifySignatureAllResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IVerificationService_VerifySignatureAll_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q3:DssFault" xmlns:q3="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="IVerificationService_VerifyDetachedSignature_InputMessage">
+        <wsdl:part name="parameters" element="tns:VerifyDetachedSignature"/>
+    </wsdl:message>
+    <wsdl:message name="IVerificationService_VerifyDetachedSignature_OutputMessage">
+        <wsdl:part name="parameters" element="tns:VerifyDetachedSignatureResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IVerificationService_VerifyDetachedSignature_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q4:DssFault" xmlns:q4="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="IVerificationService_VerifyDetachedSignatureAll_InputMessage">
+        <wsdl:part name="parameters" element="tns:VerifyDetachedSignatureAll"/>
+    </wsdl:message>
+    <wsdl:message name="IVerificationService_VerifyDetachedSignatureAll_OutputMessage">
+        <wsdl:part name="parameters" element="tns:VerifyDetachedSignatureAllResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IVerificationService_VerifyDetachedSignatureAll_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q5:DssFault" xmlns:q5="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="IVerificationService_VerifyGost34102001_InputMessage">
+        <wsdl:part name="parameters" element="tns:VerifyGost34102001"/>
+    </wsdl:message>
+    <wsdl:message name="IVerificationService_VerifyGost34102001_OutputMessage">
+        <wsdl:part name="parameters" element="tns:VerifyGost34102001Response"/>
+    </wsdl:message>
+    <wsdl:message name="IVerificationService_VerifyGost34102001_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q6:DssFault" xmlns:q6="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="IVerificationService_VerifyCertificate_InputMessage">
+        <wsdl:part name="parameters" element="tns:VerifyCertificate"/>
+    </wsdl:message>
+    <wsdl:message name="IVerificationService_VerifyCertificate_OutputMessage">
+        <wsdl:part name="parameters" element="tns:VerifyCertificateResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IVerificationService_VerifyCertificate_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q7:DssFault" xmlns:q7="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="IVerificationService_GetPolicy_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetPolicy"/>
+    </wsdl:message>
+    <wsdl:message name="IVerificationService_GetPolicy_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetPolicyResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IVerificationService_GetPolicy_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q8:DssFault" xmlns:q8="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:portType name="IVerificationService">
+        <wsdl:operation name="GetSignersInfo">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2015/04/IVerificationService/GetSignersInfo"
+                        message="tns:IVerificationService_GetSignersInfo_InputMessage"/>
+            <wsdl:output
+                    wsam:Action="http://dss.cryptopro.ru/services/2015/04/IVerificationService/GetSignersInfoResponse"
+                    message="tns:IVerificationService_GetSignersInfo_OutputMessage"/>
+            <wsdl:fault
+                    wsam:Action="http://dss.cryptopro.ru/services/2015/04/IVerificationService/GetSignersInfoDssFaultFault"
+                    name="DssFaultFault" message="tns:IVerificationService_GetSignersInfo_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="VerifySignature">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2015/04/IVerificationService/VerifySignature"
+                        message="tns:IVerificationService_VerifySignature_InputMessage"/>
+            <wsdl:output
+                    wsam:Action="http://dss.cryptopro.ru/services/2015/04/IVerificationService/VerifySignatureResponse"
+                    message="tns:IVerificationService_VerifySignature_OutputMessage"/>
+            <wsdl:fault
+                    wsam:Action="http://dss.cryptopro.ru/services/2015/04/IVerificationService/VerifySignatureDssFaultFault"
+                    name="DssFaultFault" message="tns:IVerificationService_VerifySignature_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="VerifySignatureAll">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2015/04/IVerificationService/VerifySignatureAll"
+                        message="tns:IVerificationService_VerifySignatureAll_InputMessage"/>
+            <wsdl:output
+                    wsam:Action="http://dss.cryptopro.ru/services/2015/04/IVerificationService/VerifySignatureAllResponse"
+                    message="tns:IVerificationService_VerifySignatureAll_OutputMessage"/>
+            <wsdl:fault
+                    wsam:Action="http://dss.cryptopro.ru/services/2015/04/IVerificationService/VerifySignatureAllDssFaultFault"
+                    name="DssFaultFault"
+                    message="tns:IVerificationService_VerifySignatureAll_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="VerifyDetachedSignature">
+            <wsdl:input
+                    wsam:Action="http://dss.cryptopro.ru/services/2015/04/IVerificationService/VerifyDetachedSignature"
+                    message="tns:IVerificationService_VerifyDetachedSignature_InputMessage"/>
+            <wsdl:output
+                    wsam:Action="http://dss.cryptopro.ru/services/2015/04/IVerificationService/VerifyDetachedSignatureResponse"
+                    message="tns:IVerificationService_VerifyDetachedSignature_OutputMessage"/>
+            <wsdl:fault
+                    wsam:Action="http://dss.cryptopro.ru/services/2015/04/IVerificationService/VerifyDetachedSignatureDssFaultFault"
+                    name="DssFaultFault"
+                    message="tns:IVerificationService_VerifyDetachedSignature_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="VerifyDetachedSignatureAll">
+            <wsdl:input
+                    wsam:Action="http://dss.cryptopro.ru/services/2015/04/IVerificationService/VerifyDetachedSignatureAll"
+                    message="tns:IVerificationService_VerifyDetachedSignatureAll_InputMessage"/>
+            <wsdl:output
+                    wsam:Action="http://dss.cryptopro.ru/services/2015/04/IVerificationService/VerifyDetachedSignatureAllResponse"
+                    message="tns:IVerificationService_VerifyDetachedSignatureAll_OutputMessage"/>
+            <wsdl:fault
+                    wsam:Action="http://dss.cryptopro.ru/services/2015/04/IVerificationService/VerifyDetachedSignatureAllDssFaultFault"
+                    name="DssFaultFault"
+                    message="tns:IVerificationService_VerifyDetachedSignatureAll_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="VerifyGost34102001">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2015/04/IVerificationService/VerifyGost34102001"
+                        message="tns:IVerificationService_VerifyGost34102001_InputMessage"/>
+            <wsdl:output
+                    wsam:Action="http://dss.cryptopro.ru/services/2015/04/IVerificationService/VerifyGost34102001Response"
+                    message="tns:IVerificationService_VerifyGost34102001_OutputMessage"/>
+            <wsdl:fault
+                    wsam:Action="http://dss.cryptopro.ru/services/2015/04/IVerificationService/VerifyGost34102001DssFaultFault"
+                    name="DssFaultFault"
+                    message="tns:IVerificationService_VerifyGost34102001_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="VerifyCertificate">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2015/04/IVerificationService/VerifyCertificate"
+                        message="tns:IVerificationService_VerifyCertificate_InputMessage"/>
+            <wsdl:output
+                    wsam:Action="http://dss.cryptopro.ru/services/2015/04/IVerificationService/VerifyCertificateResponse"
+                    message="tns:IVerificationService_VerifyCertificate_OutputMessage"/>
+            <wsdl:fault
+                    wsam:Action="http://dss.cryptopro.ru/services/2015/04/IVerificationService/VerifyCertificateDssFaultFault"
+                    name="DssFaultFault"
+                    message="tns:IVerificationService_VerifyCertificate_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetPolicy">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2015/04/IVerificationService/GetPolicy"
+                        message="tns:IVerificationService_GetPolicy_InputMessage"/>
+            <wsdl:output wsam:Action="http://dss.cryptopro.ru/services/2015/04/IVerificationService/GetPolicyResponse"
+                         message="tns:IVerificationService_GetPolicy_OutputMessage"/>
+            <wsdl:fault
+                    wsam:Action="http://dss.cryptopro.ru/services/2015/04/IVerificationService/GetPolicyDssFaultFault"
+                    name="DssFaultFault" message="tns:IVerificationService_GetPolicy_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:service name="VerificationService">
+        <wsdl:port name="BasicHttpBinding_IVerificationService" binding="i0:BasicHttpBinding_IVerificationService">
+            <soap:address location="http://stenddss/VerificationService/service.svc"/>
+        </wsdl:port>
+        <wsdl:port name="BasicHttpsBinding_IVerificationService" binding="i0:BasicHttpsBinding_IVerificationService">
+            <soap:address location="https://stenddss/VerificationService/service.svc"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<arquillian xmlns="http://www.jboss.org/arquillian-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.jboss.org/arquillian-1.0 http://jboss.org/schema/arquillian/arquillian-1.0.xsd">
+
+	<engine>
+		<property name="deploymentExportPath">target/</property>
+	</engine>
+
+	<container qualifier="websphere" default="true">
+		<configuration>
+			<property name="remoteServerAddress">asoa-dev.it.ru</property>
+			<property name="remoteServerSoapPort">8880</property>
+			<property name="securityEnabled">true</property>
+			<property name="username">gcd_admin@rshbank.ru</property>
+			<!--<property name="username">cpe_service_user@rshbank.ru</property>-->
+			<property name="password">o9p0[-]=</property>
+ 			<property name="sslTrustStore">D:\dev\certs\DummyClientTrustFile.jks</property>
+			<property name="sslTrustStorePassword">WebAS</property>
+ 			<!--<property name="sslKeyStore">D:\dev\certs\DummyClientKeyFile.jks</property>-->
+			<!--<property name="sslKeyStorePassword">WebAS</property>-->
+		</configuration>
+	</container>
+</arquillian>

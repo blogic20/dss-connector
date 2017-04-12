@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified"
+           targetNamespace="http://schemas.datacontract.org/2004/07/CryptoPro.DSS.Common.UserManagementService"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://schemas.datacontract.org/2004/07/CryptoPro.DSS.Common.UserManagementService">
+    <xs:import schemaLocation="UserManagement.3.xsd"
+               namespace="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    <xs:import schemaLocation="UserManagement.1.xsd"
+               namespace="http://schemas.microsoft.com/2003/10/Serialization/"/>
+    <xs:import schemaLocation="UserManagement.4.xsd"
+               namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+    <xs:complexType name="UmsPolicy">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="AllowUserRegistration" type="xs:boolean"/>
+            <xs:element minOccurs="0" name="AuthenticationPolicy" nillable="true" type="tns:AuthenticationPolicy"/>
+            <xs:element minOccurs="0" name="AvaliableIdentifierTypes" nillable="true" type="tns:ArrayOfIdentifierType"/>
+            <xs:element minOccurs="0" name="CryptoProviders" nillable="true" type="tns:ArrayOfCryptoProviderInfo"/>
+            <xs:element minOccurs="0" name="Groups" nillable="true" type="tns:ArrayOfIdentityGroupInfo"/>
+            <xs:element minOccurs="0" name="IdentityProviders" nillable="true" type="tns:ArrayOfIdentityProviderInfo"/>
+            <xs:element minOccurs="0" name="Rdns" nillable="true" type="tns:ArrayOfRdnInfo"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="UmsPolicy" nillable="true" type="tns:UmsPolicy"/>
+    <xs:complexType name="AuthenticationPolicy">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="AuthMethods" nillable="true" type="tns:ArrayOfAuthnMethodDescription"/>
+            <xs:element minOccurs="0" name="EditableByUser" type="xs:boolean"/>
+            <xs:element minOccurs="0" name="Mode" type="q1:MfaPolicy"
+                        xmlns:q1="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+            <xs:element minOccurs="0" name="OperationPolicy" nillable="true" type="tns:ArrayOfOperationPolicy"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="AuthenticationPolicy" nillable="true" type="tns:AuthenticationPolicy"/>
+    <xs:complexType name="ArrayOfAuthnMethodDescription">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="AuthnMethodDescription" nillable="true"
+                        type="tns:AuthnMethodDescription"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfAuthnMethodDescription" nillable="true" type="tns:ArrayOfAuthnMethodDescription"/>
+    <xs:complexType name="AuthnMethodDescription">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Identifier" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="Type" type="tns:AuthnLevel"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="AuthnMethodDescription" nillable="true" type="tns:AuthnMethodDescription"/>
+    <xs:simpleType name="AuthnLevel">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Primary">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1
+                        </EnumerationValue>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Secondary">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2
+                        </EnumerationValue>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="PrimaryAndSecondary">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3
+                        </EnumerationValue>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="AuthnLevel" nillable="true" type="tns:AuthnLevel"/>
+    <xs:complexType name="ArrayOfOperationPolicy">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="OperationPolicy" nillable="true"
+                        type="tns:OperationPolicy"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfOperationPolicy" nillable="true" type="tns:ArrayOfOperationPolicy"/>
+    <xs:complexType name="OperationPolicy">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Action" type="q2:DSSActions"
+                        xmlns:q2="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+            <xs:element minOccurs="0" name="ConfirmationRequired" type="xs:boolean"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="OperationPolicy" nillable="true" type="tns:OperationPolicy"/>
+    <xs:complexType name="ArrayOfIdentifierType">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="IdentifierType" type="tns:IdentifierType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfIdentifierType" nillable="true" type="tns:ArrayOfIdentifierType"/>
+    <xs:simpleType name="IdentifierType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Login"/>
+            <xs:enumeration value="PhoneNumber"/>
+            <xs:enumeration value="Email"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="IdentifierType" nillable="true" type="tns:IdentifierType"/>
+    <xs:complexType name="ArrayOfCryptoProviderInfo">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="CryptoProviderInfo" nillable="true"
+                        type="tns:CryptoProviderInfo"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfCryptoProviderInfo" nillable="true" type="tns:ArrayOfCryptoProviderInfo"/>
+    <xs:complexType name="CryptoProviderInfo">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="Type" type="tns:CryptoProviderProfileType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="CryptoProviderInfo" nillable="true" type="tns:CryptoProviderInfo"/>
+    <xs:simpleType name="CryptoProviderProfileType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="GOST">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1
+                        </EnumerationValue>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="RSA_AES">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2
+                        </EnumerationValue>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="CryptoProviderProfileType" nillable="true" type="tns:CryptoProviderProfileType"/>
+    <xs:complexType name="ArrayOfIdentityGroupInfo">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="IdentityGroupInfo" nillable="true"
+                        type="tns:IdentityGroupInfo"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfIdentityGroupInfo" nillable="true" type="tns:ArrayOfIdentityGroupInfo"/>
+    <xs:complexType name="IdentityGroupInfo">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="GroupList" nillable="true" type="q3:ArrayOfstring"
+                        xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+            <xs:element minOccurs="0" name="IdentityProviderName" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="IdentityGroupInfo" nillable="true" type="tns:IdentityGroupInfo"/>
+    <xs:complexType name="ArrayOfIdentityProviderInfo">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="IdentityProviderInfo" nillable="true"
+                        type="tns:IdentityProviderInfo"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfIdentityProviderInfo" nillable="true" type="tns:ArrayOfIdentityProviderInfo"/>
+    <xs:complexType name="IdentityProviderInfo">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="DisplayName" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="IssuerName" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="IdentityProviderInfo" nillable="true" type="tns:IdentityProviderInfo"/>
+    <xs:complexType name="ArrayOfRdnInfo">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="RdnInfo" nillable="true" type="tns:RdnInfo"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfRdnInfo" nillable="true" type="tns:ArrayOfRdnInfo"/>
+    <xs:complexType name="RdnInfo">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="DefaultValue" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="DisplayName" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="Id" type="xs:int"/>
+            <xs:element minOccurs="0" name="MaxLength" type="xs:int"/>
+            <xs:element minOccurs="0" name="MinLength" type="xs:int"/>
+            <xs:element minOccurs="0" name="Oid" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="Order" type="xs:int"/>
+            <xs:element minOccurs="0" name="Required" type="xs:boolean"/>
+            <xs:element minOccurs="0" name="StringIdentifier" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="RdnInfo" nillable="true" type="tns:RdnInfo"/>
+    <xs:complexType name="DssUserInfo">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="AccountLocked" type="xs:boolean"/>
+            <xs:element minOccurs="0" name="CreationDate" type="xs:dateTime"/>
+            <xs:element minOccurs="0" name="DisplayName" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="DistinguishName" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="EmailConfirmed" type="xs:boolean"/>
+            <xs:element minOccurs="0" name="Group" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="LastLoginDate" type="xs:dateTime"/>
+            <xs:element minOccurs="0" name="LockoutDate" nillable="true" type="xs:dateTime"/>
+            <xs:element minOccurs="0" name="Login" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="PhoneConfirmed" type="xs:boolean"/>
+            <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="DssUserInfo" nillable="true" type="tns:DssUserInfo"/>
+    <xs:complexType name="ArrayOfAuthenticationInfo">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="AuthenticationInfo" nillable="true"
+                        type="tns:AuthenticationInfo"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfAuthenticationInfo" nillable="true" type="tns:ArrayOfAuthenticationInfo"/>
+    <xs:complexType name="AuthenticationInfo">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Level" type="xs:int"/>
+            <xs:element minOccurs="0" name="MethodUri" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="AuthenticationInfo" nillable="true" type="tns:AuthenticationInfo"/>
+    <xs:complexType name="UserProperty">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="PropertyType" type="tns:UserPropertyType"/>
+            <xs:element minOccurs="0" name="Value" nillable="true" type="xs:anyType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="UserProperty" nillable="true" type="tns:UserProperty"/>
+    <xs:simpleType name="UserPropertyType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="DisplayName"/>
+            <xs:enumeration value="AccountLockedState"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="UserPropertyType" nillable="true" type="tns:UserPropertyType"/>
+    <xs:complexType name="ArrayOfDssUserInfo">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="DssUserInfo" nillable="true" type="tns:DssUserInfo"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfDssUserInfo" nillable="true" type="tns:ArrayOfDssUserInfo"/>
+</xs:schema>

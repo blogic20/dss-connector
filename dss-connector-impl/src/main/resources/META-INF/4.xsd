@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://dss.cryptopro.ru/services/2015/04/"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:import schemaLocation="2.xsd"
+               namespace="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    <xs:import schemaLocation="3.xsd"
+               namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+    <xs:element name="GetSignersInfo">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="signatureType" type="q1:SignatureType"
+                            xmlns:q1="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+                <xs:element minOccurs="0" name="document" nillable="true" type="xs:base64Binary"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetSignersInfoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="GetSignersInfoResult" nillable="true" type="q2:SignersInfo"
+                            xmlns:q2="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="VerifySignature">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="signatureType" type="q3:SignatureType"
+                            xmlns:q3="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+                <xs:element minOccurs="0" name="document" nillable="true" type="xs:base64Binary"/>
+                <xs:element minOccurs="0" name="verifyParams" nillable="true"
+                            type="q4:ArrayOfKeyValueOfVerifyParamsstring1Iy7z97I"
+                            xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="VerifySignatureResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="VerifySignatureResult" nillable="true" type="q5:VerificationResult"
+                            xmlns:q5="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="VerifySignatureAll">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="signatureType" type="q6:SignatureType"
+                            xmlns:q6="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+                <xs:element minOccurs="0" name="document" nillable="true" type="xs:base64Binary"/>
+                <xs:element minOccurs="0" name="verifyParams" nillable="true"
+                            type="q7:ArrayOfKeyValueOfVerifyParamsstring1Iy7z97I"
+                            xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="VerifySignatureAllResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="VerifySignatureAllResult" nillable="true"
+                            type="q8:ArrayOfVerificationResult"
+                            xmlns:q8="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="VerifyDetachedSignature">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="signatureType" type="q9:SignatureType"
+                            xmlns:q9="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+                <xs:element minOccurs="0" name="document" nillable="true" type="xs:base64Binary"/>
+                <xs:element minOccurs="0" name="signature" nillable="true" type="xs:base64Binary"/>
+                <xs:element minOccurs="0" name="verifyParams" nillable="true"
+                            type="q10:ArrayOfKeyValueOfVerifyParamsstring1Iy7z97I"
+                            xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="VerifyDetachedSignatureResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="VerifyDetachedSignatureResult" nillable="true"
+                            type="q11:VerificationResult"
+                            xmlns:q11="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="VerifyDetachedSignatureAll">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="signatureType" type="q12:SignatureType"
+                            xmlns:q12="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+                <xs:element minOccurs="0" name="document" nillable="true" type="xs:base64Binary"/>
+                <xs:element minOccurs="0" name="signature" nillable="true" type="xs:base64Binary"/>
+                <xs:element minOccurs="0" name="verifyParams" nillable="true"
+                            type="q13:ArrayOfKeyValueOfVerifyParamsstring1Iy7z97I"
+                            xmlns:q13="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="VerifyDetachedSignatureAllResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="VerifyDetachedSignatureAllResult" nillable="true"
+                            type="q14:ArrayOfVerificationResult"
+                            xmlns:q14="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="VerifyGost34102001">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="certificate" nillable="true" type="xs:base64Binary"/>
+                <xs:element minOccurs="0" name="signature" nillable="true" type="xs:base64Binary"/>
+                <xs:element minOccurs="0" name="data" nillable="true" type="xs:base64Binary"/>
+                <xs:element minOccurs="0" name="verifyParams" nillable="true"
+                            type="q15:ArrayOfKeyValueOfVerifyParamsstring1Iy7z97I"
+                            xmlns:q15="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="VerifyGost34102001Response">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="VerifyGost34102001Result" nillable="true" type="q16:VerificationResult"
+                            xmlns:q16="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="VerifyCertificate">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="certificate" nillable="true" type="xs:base64Binary"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="VerifyCertificateResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="VerifyCertificateResult" nillable="true" type="q17:VerificationResult"
+                            xmlns:q17="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetPolicy">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetPolicyResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="GetPolicyResult" nillable="true" type="q18:VsPolicy"
+                            xmlns:q18="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

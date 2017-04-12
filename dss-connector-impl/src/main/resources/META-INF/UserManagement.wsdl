@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="UserManagementService" targetNamespace="http://dss.cryptopro.ru/services/2015/12/"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:i0="http://dss.cryptopro.ru/services/bindings/2014/06/"
+                  xmlns:wsa10="http://www.w3.org/2005/08/addressing"
+                  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+                  xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://dss.cryptopro.ru/services/2015/12/"
+>
+    <wsdl:import namespace="http://dss.cryptopro.ru/services/bindings/2014/06/" location="UserManagement.policy.wsdl"/>
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://dss.cryptopro.ru/services/2015/12/Imports">
+            <xsd:import schemaLocation="UserManagement.0.xsd" namespace="http://dss.cryptopro.ru/services/2015/12/"/>
+            <xsd:import schemaLocation="UserManagement.3.xsd" namespace="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+            <xsd:import schemaLocation="UserManagement.1.xsd" namespace="http://schemas.microsoft.com/2003/10/Serialization/"/>
+            <xsd:import schemaLocation="UserManagement.2.xsd" namespace="http://schemas.datacontract.org/2004/07/CryptoPro.DSS.Common.UserManagementService"/>
+            <xsd:import schemaLocation="UserManagement.4.xsd" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+            <xsd:import schemaLocation="UserManagement.5.xsd" namespace="http://schemas.datacontract.org/2004/07/CryptoPro.DSS.Common.UserManagementService.Filtration"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="IUserManagementService_GetPolicy_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetPolicy"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_GetPolicy_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetPolicyResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_GetPolicy_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q1:DssFault" xmlns:q1="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_RegisterUser_InputMessage">
+        <wsdl:part name="parameters" element="tns:RegisterUser"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_RegisterUser_OutputMessage">
+        <wsdl:part name="parameters" element="tns:RegisterUserResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_RegisterUser_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q2:DssFault" xmlns:q2="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_AddExternalLogin_InputMessage">
+        <wsdl:part name="parameters" element="tns:AddExternalLogin"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_AddExternalLogin_OutputMessage">
+        <wsdl:part name="parameters" element="tns:AddExternalLoginResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_AddExternalLogin_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q3:DssFault" xmlns:q3="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_GetUser_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetUser"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_GetUser_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetUserResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_GetUser_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q4:DssFault" xmlns:q4="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_GetUserById_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetUserById"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_GetUserById_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetUserByIdResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_GetUserById_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q5:DssFault" xmlns:q5="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_SetUserPhoneNumber_InputMessage">
+        <wsdl:part name="parameters" element="tns:SetUserPhoneNumber"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_SetUserPhoneNumber_OutputMessage">
+        <wsdl:part name="parameters" element="tns:SetUserPhoneNumberResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_SetUserPhoneNumber_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q6:DssFault" xmlns:q6="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_SetUserSimAuthToken_InputMessage">
+        <wsdl:part name="parameters" element="tns:SetUserSimAuthToken"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_SetUserSimAuthToken_OutputMessage">
+        <wsdl:part name="parameters" element="tns:SetUserSimAuthTokenResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_SetUserSimAuthToken_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q7:DssFault" xmlns:q7="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_SetUserOtpToken_InputMessage">
+        <wsdl:part name="parameters" element="tns:SetUserOtpToken"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_SetUserOtpToken_OutputMessage">
+        <wsdl:part name="parameters" element="tns:SetUserOtpTokenResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_SetUserOtpToken_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q8:DssFault" xmlns:q8="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_AssignAuthenticationMethod_InputMessage">
+        <wsdl:part name="parameters" element="tns:AssignAuthenticationMethod"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_AssignAuthenticationMethod_OutputMessage">
+        <wsdl:part name="parameters" element="tns:AssignAuthenticationMethodResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_AssignAuthenticationMethod_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q9:DssFault" xmlns:q9="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_RemoveAuthenticationMethod_InputMessage">
+        <wsdl:part name="parameters" element="tns:RemoveAuthenticationMethod"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_RemoveAuthenticationMethod_OutputMessage">
+        <wsdl:part name="parameters" element="tns:RemoveAuthenticationMethodResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_RemoveAuthenticationMethod_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q10:DssFault" xmlns:q10="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_GetUserAuthenticationScheme_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetUserAuthenticationScheme"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_GetUserAuthenticationScheme_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetUserAuthenticationSchemeResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_GetUserAuthenticationScheme_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q11:DssFault" xmlns:q11="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_DeleteUser_InputMessage">
+        <wsdl:part name="parameters" element="tns:DeleteUser"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_DeleteUser_OutputMessage">
+        <wsdl:part name="parameters" element="tns:DeleteUserResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_DeleteUser_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q12:DssFault" xmlns:q12="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_SetUserGroup_InputMessage">
+        <wsdl:part name="parameters" element="tns:SetUserGroup"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_SetUserGroup_OutputMessage">
+        <wsdl:part name="parameters" element="tns:SetUserGroupResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_SetUserGroup_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q13:DssFault" xmlns:q13="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_GetUserOperationPolicy_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetUserOperationPolicy"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_GetUserOperationPolicy_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetUserOperationPolicyResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_GetUserOperationPolicy_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q14:DssFault" xmlns:q14="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_SetUserOperationPolicy_InputMessage">
+        <wsdl:part name="parameters" element="tns:SetUserOperationPolicy"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_SetUserOperationPolicy_OutputMessage">
+        <wsdl:part name="parameters" element="tns:SetUserOperationPolicyResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_SetUserOperationPolicy_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q15:DssFault" xmlns:q15="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_SetUserProperty_InputMessage">
+        <wsdl:part name="parameters" element="tns:SetUserProperty"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_SetUserProperty_OutputMessage">
+        <wsdl:part name="parameters" element="tns:SetUserPropertyResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_SetUserProperty_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q16:DssFault" xmlns:q16="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_GetUsers_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetUsers"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_GetUsers_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetUsersResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_GetUsers_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q17:DssFault" xmlns:q17="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_ResetPassword_InputMessage">
+        <wsdl:part name="parameters" element="tns:ResetPassword"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_ResetPassword_OutputMessage">
+        <wsdl:part name="parameters" element="tns:ResetPasswordResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_ResetPassword_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q18:DssFault" xmlns:q18="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_SetUserDistinguishName_InputMessage">
+        <wsdl:part name="parameters" element="tns:SetUserDistinguishName"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_SetUserDistinguishName_OutputMessage">
+        <wsdl:part name="parameters" element="tns:SetUserDistinguishNameResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IUserManagementService_SetUserDistinguishName_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q19:DssFault" xmlns:q19="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:portType name="IUserManagementService">
+        <wsdl:operation name="GetPolicy">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/GetPolicy" message="tns:IUserManagementService_GetPolicy_InputMessage"/>
+            <wsdl:output wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/GetPolicyResponse" message="tns:IUserManagementService_GetPolicy_OutputMessage"/>
+            <wsdl:fault wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/GetPolicyDssFaultFault" name="DssFaultFault" message="tns:IUserManagementService_GetPolicy_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="RegisterUser">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/RegisterUser" message="tns:IUserManagementService_RegisterUser_InputMessage"/>
+            <wsdl:output wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/RegisterUserResponse" message="tns:IUserManagementService_RegisterUser_OutputMessage"/>
+            <wsdl:fault wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/RegisterUserDssFaultFault" name="DssFaultFault" message="tns:IUserManagementService_RegisterUser_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="AddExternalLogin">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/AddExternalLogin" message="tns:IUserManagementService_AddExternalLogin_InputMessage"/>
+            <wsdl:output wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/AddExternalLoginResponse" message="tns:IUserManagementService_AddExternalLogin_OutputMessage"/>
+            <wsdl:fault wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/AddExternalLoginDssFaultFault" name="DssFaultFault" message="tns:IUserManagementService_AddExternalLogin_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetUser">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/GetUser" message="tns:IUserManagementService_GetUser_InputMessage"/>
+            <wsdl:output wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/GetUserResponse" message="tns:IUserManagementService_GetUser_OutputMessage"/>
+            <wsdl:fault wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/GetUserDssFaultFault" name="DssFaultFault" message="tns:IUserManagementService_GetUser_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetUserById">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/GetUserById" message="tns:IUserManagementService_GetUserById_InputMessage"/>
+            <wsdl:output wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/GetUserByIdResponse" message="tns:IUserManagementService_GetUserById_OutputMessage"/>
+            <wsdl:fault wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/GetUserByIdDssFaultFault" name="DssFaultFault" message="tns:IUserManagementService_GetUserById_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="SetUserPhoneNumber">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/SetUserPhoneNumber" message="tns:IUserManagementService_SetUserPhoneNumber_InputMessage"/>
+            <wsdl:output wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/SetUserPhoneNumberResponse" message="tns:IUserManagementService_SetUserPhoneNumber_OutputMessage"/>
+            <wsdl:fault wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/SetUserPhoneNumberDssFaultFault" name="DssFaultFault" message="tns:IUserManagementService_SetUserPhoneNumber_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="SetUserSimAuthToken">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/SetUserSimAuthToken" message="tns:IUserManagementService_SetUserSimAuthToken_InputMessage"/>
+            <wsdl:output wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/SetUserSimAuthTokenResponse" message="tns:IUserManagementService_SetUserSimAuthToken_OutputMessage"/>
+            <wsdl:fault wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/SetUserSimAuthTokenDssFaultFault" name="DssFaultFault" message="tns:IUserManagementService_SetUserSimAuthToken_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="SetUserOtpToken">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/SetUserOtpToken" message="tns:IUserManagementService_SetUserOtpToken_InputMessage"/>
+            <wsdl:output wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/SetUserOtpTokenResponse" message="tns:IUserManagementService_SetUserOtpToken_OutputMessage"/>
+            <wsdl:fault wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/SetUserOtpTokenDssFaultFault" name="DssFaultFault" message="tns:IUserManagementService_SetUserOtpToken_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="AssignAuthenticationMethod">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/AssignAuthenticationMethod" message="tns:IUserManagementService_AssignAuthenticationMethod_InputMessage"/>
+            <wsdl:output wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/AssignAuthenticationMethodResponse" message="tns:IUserManagementService_AssignAuthenticationMethod_OutputMessage"/>
+            <wsdl:fault wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/AssignAuthenticationMethodDssFaultFault" name="DssFaultFault" message="tns:IUserManagementService_AssignAuthenticationMethod_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="RemoveAuthenticationMethod">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/RemoveAuthenticationMethod" message="tns:IUserManagementService_RemoveAuthenticationMethod_InputMessage"/>
+            <wsdl:output wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/RemoveAuthenticationMethodResponse" message="tns:IUserManagementService_RemoveAuthenticationMethod_OutputMessage"/>
+            <wsdl:fault wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/RemoveAuthenticationMethodDssFaultFault" name="DssFaultFault" message="tns:IUserManagementService_RemoveAuthenticationMethod_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetUserAuthenticationScheme">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/GetUserAuthenticationScheme" message="tns:IUserManagementService_GetUserAuthenticationScheme_InputMessage"/>
+            <wsdl:output wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/GetUserAuthenticationSchemeResponse" message="tns:IUserManagementService_GetUserAuthenticationScheme_OutputMessage"/>
+            <wsdl:fault wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/GetUserAuthenticationSchemeDssFaultFault" name="DssFaultFault" message="tns:IUserManagementService_GetUserAuthenticationScheme_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteUser">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/DeleteUser" message="tns:IUserManagementService_DeleteUser_InputMessage"/>
+            <wsdl:output wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/DeleteUserResponse" message="tns:IUserManagementService_DeleteUser_OutputMessage"/>
+            <wsdl:fault wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/DeleteUserDssFaultFault" name="DssFaultFault" message="tns:IUserManagementService_DeleteUser_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="SetUserGroup">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/SetUserGroup" message="tns:IUserManagementService_SetUserGroup_InputMessage"/>
+            <wsdl:output wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/SetUserGroupResponse" message="tns:IUserManagementService_SetUserGroup_OutputMessage"/>
+            <wsdl:fault wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/SetUserGroupDssFaultFault" name="DssFaultFault" message="tns:IUserManagementService_SetUserGroup_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetUserOperationPolicy">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/GetUserOperationPolicy" message="tns:IUserManagementService_GetUserOperationPolicy_InputMessage"/>
+            <wsdl:output wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/GetUserOperationPolicyResponse" message="tns:IUserManagementService_GetUserOperationPolicy_OutputMessage"/>
+            <wsdl:fault wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/GetUserOperationPolicyDssFaultFault" name="DssFaultFault" message="tns:IUserManagementService_GetUserOperationPolicy_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="SetUserOperationPolicy">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/SetUserOperationPolicy" message="tns:IUserManagementService_SetUserOperationPolicy_InputMessage"/>
+            <wsdl:output wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/SetUserOperationPolicyResponse" message="tns:IUserManagementService_SetUserOperationPolicy_OutputMessage"/>
+            <wsdl:fault wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/SetUserOperationPolicyDssFaultFault" name="DssFaultFault" message="tns:IUserManagementService_SetUserOperationPolicy_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="SetUserProperty">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/SetUserProperty" message="tns:IUserManagementService_SetUserProperty_InputMessage"/>
+            <wsdl:output wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/SetUserPropertyResponse" message="tns:IUserManagementService_SetUserProperty_OutputMessage"/>
+            <wsdl:fault wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/SetUserPropertyDssFaultFault" name="DssFaultFault" message="tns:IUserManagementService_SetUserProperty_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetUsers">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/GetUsers" message="tns:IUserManagementService_GetUsers_InputMessage"/>
+            <wsdl:output wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/GetUsersResponse" message="tns:IUserManagementService_GetUsers_OutputMessage"/>
+            <wsdl:fault wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/GetUsersDssFaultFault" name="DssFaultFault" message="tns:IUserManagementService_GetUsers_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="ResetPassword">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/ResetPassword" message="tns:IUserManagementService_ResetPassword_InputMessage"/>
+            <wsdl:output wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/ResetPasswordResponse" message="tns:IUserManagementService_ResetPassword_OutputMessage"/>
+            <wsdl:fault wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/ResetPasswordDssFaultFault" name="DssFaultFault" message="tns:IUserManagementService_ResetPassword_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="SetUserDistinguishName">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/SetUserDistinguishName" message="tns:IUserManagementService_SetUserDistinguishName_InputMessage"/>
+            <wsdl:output wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/SetUserDistinguishNameResponse" message="tns:IUserManagementService_SetUserDistinguishName_OutputMessage"/>
+            <wsdl:fault wsam:Action="http://dss.cryptopro.ru/services/2015/12/IUserManagementService/SetUserDistinguishNameDssFaultFault" name="DssFaultFault" message="tns:IUserManagementService_SetUserDistinguishName_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:service name="UserManagementService">
+        <wsdl:port name="WSHttpBinding_IUserManagementService" binding="i0:WSHttpBinding_IUserManagementService">
+            <soap12:address location="https://stenddss.cryptopro.ru/aeroflotidp/UserManagement.svc/cert"/>
+            <wsa10:EndpointReference>
+                <wsa10:Address>https://stenddss.cryptopro.ru/aeroflotidp/UserManagement.svc/cert</wsa10:Address>
+            </wsa10:EndpointReference>
+        </wsdl:port>
+        <wsdl:port name="WS2007HttpBinding_IUserManagementService" binding="i0:WS2007HttpBinding_IUserManagementService">
+            <soap12:address location="http://stenddss.cryptopro.ru/aeroflotidp/UserManagement.svc/token"/>
+            <wsa10:EndpointReference>
+                <wsa10:Address>http://stenddss.cryptopro.ru/aeroflotidp/UserManagement.svc/token</wsa10:Address>
+<!--
+                <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+                    <KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+                        <X509Data>
+                            <X509Certificate>MIIDEzCCAf+gAwIBAgIQstS8dCd8I6dMsNmjjOk09TAJBgUrDgMCHQUAMBMxETAPBgNVBAMTCHN0ZW5kZHNzMB4XDTE0MTIwODEyMjIyMFoXDTM5MTIzMTIzNTk1OVowEzERMA8GA1UEAxMIc3RlbmRkc3MwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCSXJWePZtiYUmxkJVpanIwDzpZJoL9qFl7E/UU8cmkgxZtr/hjU8/WwLxtOCTC4WaIpfYRH8bFnVDWy4W5ZErfNEWAj4mU3IBwe4ng9wdp9hTpORZzYL0Sx7hYlMoBtiHWhWy/udQNZL7ld1lQeqnEgdZIHLFhMBlh33kXXlFOxaPK6DsUTBrgI0EkTba481TtUaR0rz7uVMyfqW+D+TLLcX+6llrbNouxSdbT6/Hpbta0/F8J6YgDqnncNJYo9oTIa2KWBQKgQKblGRykioX6h8VM7v5C6pP/gtt/m4x5LDyqslAIRYqbQbaglSylOA+mwka5Sgzn+1dBcPvyTsInAgMBAAGjazBpMAwGA1UdEwEB/wQCMAAwEwYDVR0lBAwwCgYIKwYBBQUHAwEwRAYDVR0BBD0wO4AQ9h8ZeWLOvE+gc3y+Ij4MlKEVMBMxETAPBgNVBAMTCHN0ZW5kZHNzghCy1Lx0J3wjp0yw2aOM6TT1MAkGBSsOAwIdBQADggEBAESC81PWaCp+8yI6Abi63/U/rwr4msr621X/zakQi4lhCtpFJgVHlj0UmcLZJcUAxHR3T1sGFM+86xoX9AxGp7Jimp82fLKXXrs1HQlMppZi4WBVUQ6+bolnZduuyq5iBSCuonK0USctvEur13y5gRO7JiuHH7PEWiza2ZOHsHxECXn7MxD8lLSLStaixLgIdX0KidyZbT0+phAUmDsK83mSGeiSNZgCOuaswQjMy2LKpCDU7o1NT8X3Fphp++pSGBzvieCVzgnsOvZPKDycugw0FyAlWOM/aA/GEG0YJVWeP4AbEzQgBznoqWQr2DCW1l2P3q3SNm+F4H/pnpZQGac=</X509Certificate>
+                        </X509Data>
+                    </KeyInfo>
+                </Identity>
+-->
+            </wsa10:EndpointReference>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://dss.cryptopro.ru/services/schemas/2014/06/"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://dss.cryptopro.ru/services/schemas/2014/06/">
+    <xs:import schemaLocation="3.xsd"
+               namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+    <xs:import schemaLocation="1.xsd"
+               namespace="http://schemas.microsoft.com/2003/10/Serialization/"/>
+    <xs:simpleType name="EncryptionType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="CMS"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="EncryptionType" nillable="true" type="tns:EncryptionType"/>
+    <xs:complexType name="DssFault">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="DssFault" nillable="true" type="tns:DssFault"/>
+    <xs:complexType name="DSSDecryptDocumentResponse">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="CertificatesIDs" nillable="true" type="q1:ArrayOfint"
+                        xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+            <xs:element minOccurs="0" name="Result" nillable="true" type="xs:base64Binary"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="DSSDecryptDocumentResponse" nillable="true" type="tns:DSSDecryptDocumentResponse"/>
+    <xs:complexType name="DSSAuditRecordsRequest">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="EndPos" type="xs:int"/>
+            <xs:element minOccurs="0" name="Filters" nillable="true" type="tns:ArrayOfDSSAuditRecordsFilter"/>
+            <xs:element minOccurs="0" name="StartPos" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="DSSAuditRecordsRequest" nillable="true" type="tns:DSSAuditRecordsRequest"/>
+    <xs:complexType name="ArrayOfDSSAuditRecordsFilter">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="DSSAuditRecordsFilter" nillable="true"
+                        type="tns:DSSAuditRecordsFilter"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfDSSAuditRecordsFilter" nillable="true" type="tns:ArrayOfDSSAuditRecordsFilter"/>
+    <xs:complexType name="DSSAuditRecordsFilter">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Column" type="tns:DSSAuditColumn"/>
+            <xs:element minOccurs="0" name="Operation" type="tns:DSSFilterOperation"/>
+            <xs:element minOccurs="0" name="Value" nillable="true" type="xs:anyType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="DSSAuditRecordsFilter" nillable="true" type="tns:DSSAuditRecordsFilter"/>
+    <xs:simpleType name="DSSAuditColumn">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ID"/>
+            <xs:enumeration value="Level"/>
+            <xs:enumeration value="Code"/>
+            <xs:enumeration value="Source"/>
+            <xs:enumeration value="SourceDetails"/>
+            <xs:enumeration value="Data"/>
+            <xs:enumeration value="Date"/>
+            <xs:enumeration value="ExtendedData"/>
+            <xs:enumeration value="UserID"/>
+            <xs:enumeration value="Login"/>
+            <xs:enumeration value="Realm"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="DSSAuditColumn" nillable="true" type="tns:DSSAuditColumn"/>
+    <xs:simpleType name="DSSFilterOperation">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Equal"/>
+            <xs:enumeration value="NotEqual"/>
+            <xs:enumeration value="Less"/>
+            <xs:enumeration value="Greater"/>
+            <xs:enumeration value="In"/>
+            <xs:enumeration value="NotIn"/>
+            <xs:enumeration value="Between"/>
+            <xs:enumeration value="NotBetween"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="DSSFilterOperation" nillable="true" type="tns:DSSFilterOperation"/>
+    <xs:complexType name="DSSAuditRecordsResponse">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="AffectedCount" type="xs:int"/>
+            <xs:element minOccurs="0" name="Records" nillable="true" type="tns:ArrayOfDSSAuditRecord"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="DSSAuditRecordsResponse" nillable="true" type="tns:DSSAuditRecordsResponse"/>
+    <xs:complexType name="ArrayOfDSSAuditRecord">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="DSSAuditRecord" nillable="true"
+                        type="tns:DSSAuditRecord"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfDSSAuditRecord" nillable="true" type="tns:ArrayOfDSSAuditRecord"/>
+    <xs:complexType name="DSSAuditRecord">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Data" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="Date" type="xs:dateTime"/>
+            <xs:element minOccurs="0" name="DelegatedUserID" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="EventCode" type="xs:int"/>
+            <xs:element minOccurs="0" name="EventLevel" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="EventSource" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="ExtendedData" nillable="true" type="xs:base64Binary"/>
+            <xs:element minOccurs="0" name="ID" type="xs:int"/>
+            <xs:element minOccurs="0" name="Login" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="PerfomedByAdmin" type="xs:boolean"/>
+            <xs:element minOccurs="0" name="Realm" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="SourceDetails" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="DSSAuditRecord" nillable="true" type="tns:DSSAuditRecord"/>
+    <xs:simpleType name="SignatureType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="XMLDSig"/>
+            <xs:enumeration value="GOST3410"/>
+            <xs:enumeration value="CAdES"/>
+            <xs:enumeration value="PDF"/>
+            <xs:enumeration value="MSOffice"/>
+            <xs:enumeration value="CMS"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="SignatureType" nillable="true" type="tns:SignatureType"/>
+    <xs:simpleType name="SignatureParams">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="TSPAddress"/>
+            <xs:enumeration value="CADESType"/>
+            <xs:enumeration value="PDFReason"/>
+            <xs:enumeration value="PDFLocation"/>
+            <xs:enumeration value="PDFFormat"/>
+            <xs:enumeration value="XMLDSigType"/>
+            <xs:enumeration value="Hash"/>
+            <xs:enumeration value="IsDetached"/>
+            <xs:enumeration value="ObjectId"/>
+            <xs:enumeration value="PDFCertificationLevel"/>
+            <xs:enumeration value="XPath"/>
+            <xs:enumeration value="HashAlgorithm"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="SignatureParams" nillable="true" type="tns:SignatureParams"/>
+    <xs:complexType name="DSSSignDocumentResponse">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Errors" nillable="true" type="tns:ArrayOfDssFault"/>
+            <xs:element minOccurs="0" name="Results" nillable="true" type="q2:ArrayOfbase64Binary"
+                        xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="DSSSignDocumentResponse" nillable="true" type="tns:DSSSignDocumentResponse"/>
+    <xs:complexType name="ArrayOfDssFault">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="DssFault" nillable="true" type="tns:DssFault"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfDssFault" nillable="true" type="tns:ArrayOfDssFault"/>
+    <xs:complexType name="ArrayOfDSSCertificate">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="DSSCertificate" nillable="true"
+                        type="tns:DSSCertificate"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfDSSCertificate" nillable="true" type="tns:ArrayOfDSSCertificate"/>
+    <xs:complexType name="DSSCertificate">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="CertificateAuthorityID" type="xs:int"/>
+            <xs:element minOccurs="0" name="CertificateBase64" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="CspID" nillable="true" type="xs:int"/>
+            <xs:element minOccurs="0" name="DName" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="HashAlgorithms" nillable="true" type="q3:ArrayOfstring"
+                        xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+            <xs:element minOccurs="0" name="ID" type="xs:int"/>
+            <xs:element minOccurs="0" name="IsDefault" type="xs:boolean"/>
+            <xs:element minOccurs="0" name="Status" nillable="true" type="tns:CertificateStatus"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="DSSCertificate" nillable="true" type="tns:DSSCertificate"/>
+    <xs:complexType name="CertificateStatus">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="ActiveCertId" type="xs:int"/>
+            <xs:element minOccurs="0" name="PinCode" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="RevocationInfo" nillable="true" type="tns:RevocationInfo"/>
+            <xs:element minOccurs="0" name="Value" type="tns:DSSCertificateStatusEnum"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="CertificateStatus" nillable="true" type="tns:CertificateStatus"/>
+    <xs:complexType name="RevocationInfo">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="ApproveDate" type="xs:dateTime"/>
+            <xs:element minOccurs="0" name="DistName" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="RequestDate" type="xs:dateTime"/>
+            <xs:element minOccurs="0" name="RevocationComments" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="RevocationDate" type="xs:dateTime"/>
+            <xs:element minOccurs="0" name="RevocationReason" type="tns:CertRevokeReasonEnum"/>
+            <xs:element minOccurs="0" name="SignedRequest" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="UnholdAction" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="UnholdDate" type="xs:dateTime"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="RevocationInfo" nillable="true" type="tns:RevocationInfo"/>
+    <xs:simpleType name="CertRevokeReasonEnum">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="CRL_REASON_UNSPECIFIED"/>
+            <xs:enumeration value="CRL_REASON_KEY_COMPROMISE"/>
+            <xs:enumeration value="CRL_REASON_CA_COMPROMISE"/>
+            <xs:enumeration value="CRL_REASON_AFFILIATION_CHANGED"/>
+            <xs:enumeration value="CRL_REASON_SUPERSEDED"/>
+            <xs:enumeration value="CRL_REASON_CESSATION_OF_OPERATION"/>
+            <xs:enumeration value="CRL_REASON_CERTIFICATE_HOLD"/>
+            <xs:enumeration value="CRL_REASON_REMOVE_FROM_CRL">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">8
+                        </EnumerationValue>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="CertRevokeReasonEnum" nillable="true" type="tns:CertRevokeReasonEnum"/>
+    <xs:simpleType name="DSSCertificateStatusEnum">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="NULL"/>
+            <xs:enumeration value="ACTIVE"/>
+            <xs:enumeration value="REVOKED"/>
+            <xs:enumeration value="HOLD"/>
+            <xs:enumeration value="NOT_VALID"/>
+            <xs:enumeration value="OUT_OF_ORDER">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">6
+                        </EnumerationValue>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="DSSCertificateStatusEnum" nillable="true" type="tns:DSSCertificateStatusEnum"/>
+    <xs:complexType name="PinInfo">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="NewPin" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="Pin" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="PinInfo" nillable="true" type="tns:PinInfo"/>
+    <xs:complexType name="CertificateProperty">
+        <xs:sequence>
+            <xs:element name="PropertyType" type="tns:CertificatePropertyType"/>
+            <xs:element minOccurs="0" name="Value" nillable="true" type="xs:anyType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="CertificateProperty" nillable="true" type="tns:CertificateProperty"/>
+    <xs:simpleType name="CertificatePropertyType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Status"/>
+            <xs:enumeration value="Pin"/>
+            <xs:enumeration value="IsDefault"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="CertificatePropertyType" nillable="true" type="tns:CertificatePropertyType"/>
+    <xs:complexType name="RequestStatus">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="Type" type="tns:CARequestTypeEnum"/>
+            <xs:element minOccurs="0" name="Value" type="tns:DSSRequestStatusEnum"/>
+            <xs:element minOccurs="0" name="caID" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="RequestStatus" nillable="true" type="tns:RequestStatus"/>
+    <xs:simpleType name="CARequestTypeEnum">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Certificate"/>
+            <xs:enumeration value="RevokeRequest"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="CARequestTypeEnum" nillable="true" type="tns:CARequestTypeEnum"/>
+    <xs:simpleType name="DSSRequestStatusEnum">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="REGISTRATION">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">16
+                        </EnumerationValue>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="PENDING">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2
+                        </EnumerationValue>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="ACCEPTED">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4
+                        </EnumerationValue>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="REJECTED">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">8
+                        </EnumerationValue>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="DSSRequestStatusEnum" nillable="true" type="tns:DSSRequestStatusEnum"/>
+    <xs:simpleType name="DSSCertificateFormatEnum">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="RAW">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1
+                        </EnumerationValue>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="XML">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2
+                        </EnumerationValue>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="FORMATTED">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4
+                        </EnumerationValue>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="DSSCertificateFormatEnum" nillable="true" type="tns:DSSCertificateFormatEnum"/>
+    <xs:simpleType name="RequestParams">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="RequestType"/>
+            <xs:enumeration value="ActiveCertPin"/>
+            <xs:enumeration value="ActiveCertId"/>
+            <xs:enumeration value="EkuString"/>
+            <xs:enumeration value="TemplateOid"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="RequestParams" nillable="true" type="tns:RequestParams"/>
+    <xs:complexType name="ArrayOfDSSCertRequest">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="DSSCertRequest" nillable="true"
+                        type="tns:DSSCertRequest"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfDSSCertRequest" nillable="true" type="tns:ArrayOfDSSCertRequest"/>
+    <xs:complexType name="DSSCertRequest">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Base64Request" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="CADisplayName" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="CARequestID" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="CertificateAuthorityID" type="xs:int"/>
+            <xs:element minOccurs="0" name="CertificateID" type="xs:int"/>
+            <xs:element minOccurs="0" name="CspID" nillable="true" type="xs:int"/>
+            <xs:element minOccurs="0" name="DistName" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="ID" type="xs:int"/>
+            <xs:element minOccurs="0" name="RequestType" type="tns:CARequestTypeEnum"/>
+            <xs:element minOccurs="0" name="Status" type="tns:DSSRequestStatusEnum"/>
+            <xs:element minOccurs="0" name="Subject" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="DSSCertRequest" nillable="true" type="tns:DSSCertRequest"/>
+    <xs:complexType name="ArrayOfDSSRevRequest">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="DSSRevRequest" nillable="true"
+                        type="tns:DSSRevRequest"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfDSSRevRequest" nillable="true" type="tns:ArrayOfDSSRevRequest"/>
+    <xs:complexType name="DSSRevRequest">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Base64Request" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="CertificateAuthorityID" type="xs:int"/>
+            <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="RevInfo" nillable="true" type="tns:RevocationInfo"/>
+            <xs:element minOccurs="0" name="Status" type="tns:DSSRequestStatusEnum"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="DSSRevRequest" nillable="true" type="tns:DSSRevRequest"/>
+    <xs:complexType name="DSSPolicy">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="ActionPolicy" nillable="true" type="tns:ArrayOfDSSAction"/>
+            <xs:element minOccurs="0" name="AllowedSignatureTypes" nillable="true" type="tns:ArrayOfSignatureType"/>
+            <xs:element minOccurs="0" name="CAPolicy" nillable="true" type="tns:ArrayOfDSSCAPolicy"/>
+            <xs:element minOccurs="0" name="CSPsPolicy" nillable="true" type="tns:ArrayOfDSSCSPPolicy"/>
+            <xs:element minOccurs="0" name="PinCodeMode" type="tns:PinCodeMode"/>
+            <xs:element minOccurs="0" name="TransactionConfirmation" type="tns:MfaPolicy"/>
+            <xs:element minOccurs="0" name="TspServices" nillable="true" type="tns:ArrayOfTspService"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="DSSPolicy" nillable="true" type="tns:DSSPolicy"/>
+    <xs:complexType name="ArrayOfDSSAction">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="DSSAction" nillable="true" type="tns:DSSAction"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfDSSAction" nillable="true" type="tns:ArrayOfDSSAction"/>
+    <xs:complexType name="DSSAction">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Action" type="tns:DSSActions"/>
+            <xs:element minOccurs="0" name="DisplayName" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="MfaRequired" type="xs:boolean"/>
+            <xs:element minOccurs="0" name="Uri" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="DSSAction" nillable="true" type="tns:DSSAction"/>
+    <xs:simpleType name="DSSActions">
+        <xs:list>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="Issue"/>
+                    <xs:enumeration value="SignDocument"/>
+                    <xs:enumeration value="SignDocuments"/>
+                    <xs:enumeration value="DecryptDocument"/>
+                    <xs:enumeration value="CreateRequest"/>
+                    <xs:enumeration value="ChangePin"/>
+                    <xs:enumeration value="RenewCertificate"/>
+                    <xs:enumeration value="RevokeCertificate"/>
+                    <xs:enumeration value="HoldCertificate"/>
+                    <xs:enumeration value="UnholdCertificate"/>
+                    <xs:enumeration value="DeleteCertificate"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:list>
+    </xs:simpleType>
+    <xs:element name="DSSActions" nillable="true" type="tns:DSSActions"/>
+    <xs:complexType name="ArrayOfSignatureType">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="SignatureType" type="tns:SignatureType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfSignatureType" nillable="true" type="tns:ArrayOfSignatureType"/>
+    <xs:complexType name="ArrayOfDSSCAPolicy">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="DSSCAPolicy" nillable="true" type="tns:DSSCAPolicy"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfDSSCAPolicy" nillable="true" type="tns:ArrayOfDSSCAPolicy"/>
+    <xs:complexType name="DSSCAPolicy">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Active" type="xs:boolean"/>
+            <xs:element minOccurs="0" name="AllowUserMode" type="xs:boolean"/>
+            <xs:element minOccurs="0" name="CAType" type="tns:DSSCAType"/>
+            <xs:element minOccurs="0" name="EKUTemplates" nillable="true"
+                        type="q4:ArrayOfKeyValueOfstringArrayOfstringty7Ep6D1"
+                        xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+            <xs:element minOccurs="0" name="ID" type="xs:int"/>
+            <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="NamePolicy" nillable="true" type="tns:ArrayOfSubjectNameComponent"/>
+            <xs:element minOccurs="0" name="SNChangesEnable" type="xs:boolean"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="DSSCAPolicy" nillable="true" type="tns:DSSCAPolicy"/>
+    <xs:simpleType name="DSSCAType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="CryptoProCA15Enroll"/>
+            <xs:enumeration value="CryptoProCA20Enroll"/>
+            <xs:enumeration value="DSSOutOfBandEnroll"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="DSSCAType" nillable="true" type="tns:DSSCAType"/>
+    <xs:complexType name="ArrayOfSubjectNameComponent">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="SubjectNameComponent" nillable="true"
+                        type="tns:SubjectNameComponent"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfSubjectNameComponent" nillable="true" type="tns:ArrayOfSubjectNameComponent"/>
+    <xs:complexType name="SubjectNameComponent">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="IsRequired" type="xs:boolean"/>
+            <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="OID" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="Order" type="xs:int"/>
+            <xs:element minOccurs="0" name="StringIdentifier" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="SubjectNameComponent" nillable="true" type="tns:SubjectNameComponent"/>
+    <xs:complexType name="ArrayOfDSSCSPPolicy">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="DSSCSPPolicy" nillable="true"
+                        type="tns:DSSCSPPolicy"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfDSSCSPPolicy" nillable="true" type="tns:ArrayOfDSSCSPPolicy"/>
+    <xs:complexType name="DSSCSPPolicy">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Alias" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="HashAlgorithms" nillable="true" type="q5:ArrayOfstring"
+                        xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+            <xs:element minOccurs="0" name="ID" type="xs:int"/>
+            <xs:element minOccurs="0" name="KeyLength" type="xs:int"/>
+            <xs:element minOccurs="0" name="ProviderName" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="ProviderType" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="DSSCSPPolicy" nillable="true" type="tns:DSSCSPPolicy"/>
+    <xs:simpleType name="PinCodeMode">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Required"/>
+            <xs:enumeration value="Forbid"/>
+            <xs:enumeration value="Allow"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="PinCodeMode" nillable="true" type="tns:PinCodeMode"/>
+    <xs:simpleType name="MfaPolicy">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Off"/>
+            <xs:enumeration value="On"/>
+            <xs:enumeration value="NotSet"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="MfaPolicy" nillable="true" type="tns:MfaPolicy"/>
+    <xs:complexType name="ArrayOfTspService">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="TspService" nillable="true" type="tns:TspService"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfTspService" nillable="true" type="tns:ArrayOfTspService"/>
+    <xs:complexType name="TspService">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="Url" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="TspService" nillable="true" type="tns:TspService"/>
+
+    <xs:simpleType name="VerifyParams">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SignatureId"/>
+            <xs:enumeration value="SignatureIndex"/>
+            <xs:enumeration value="Hash">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3
+                        </EnumerationValue>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="VerifyParams" nillable="true" type="tns:VerifyParams"/>
+    <xs:complexType name="VerificationResult">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="Result" type="xs:boolean"/>
+            <xs:element minOccurs="0" name="SignerCertificate" nillable="true" type="xs:base64Binary"/>
+            <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0"
+                        name="SignerCertificateInfo" nillable="true"
+                        type="q2:ArrayOfKeyValueOfCertificateInfoParamsstring1Iy7z97I"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="VerificationResult" nillable="true" type="tns:VerificationResult"/>
+    <xs:complexType name="ArrayOfVerificationResult">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="VerificationResult" nillable="true"
+                        type="tns:VerificationResult"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfVerificationResult" nillable="true" type="tns:ArrayOfVerificationResult"/>
+    <xs:complexType name="VsPolicy">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="AllowedSignatureTypes" nillable="true" type="tns:ArrayOfSignatureType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="VsPolicy" nillable="true" type="tns:VsPolicy"/>
+    <xs:complexType name="SignersInfo">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="SignerInfoList" nillable="true" type="tns:ArrayOfSignerInfo"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="SignersInfo" nillable="true" type="tns:SignersInfo"/>
+    <xs:complexType name="ArrayOfSignerInfo">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="SignerInfo" nillable="true" type="tns:SignerInfo"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ArrayOfSignerInfo" nillable="true" type="tns:ArrayOfSignerInfo"/>
+    <xs:complexType name="SignerInfo">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="Index" type="xs:int"/>
+            <xs:element minOccurs="0" name="ParentId" nillable="true" type="xs:string"/>
+            <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0"
+                        name="SignerCertificateInfo" nillable="true"
+                        type="q1:ArrayOfKeyValueOfCertificateInfoParamsstring1Iy7z97I"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="SignerInfo" nillable="true" type="tns:SignerInfo"/>
+    <xs:simpleType name="CertificateInfoParams">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SubjectName"/>
+            <xs:enumeration value="IssuerName"/>
+            <xs:enumeration value="NotAfter"/>
+            <xs:enumeration value="NotBefore"/>
+            <xs:enumeration value="SerialNumber"/>
+            <xs:enumeration value="Thumbprint"/>
+            <xs:enumeration value="KeyIdentifier"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="CertificateInfoParams" nillable="true" type="tns:CertificateInfoParams"/>
+</xs:schema>

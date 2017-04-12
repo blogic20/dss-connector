@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="SignService" targetNamespace="http://dss.cryptopro.ru/services/2014/06/"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:i0="http://dss.cryptopro.ru/services/bindings/2014/06/"
+                  xmlns:wsa10="http://www.w3.org/2005/08/addressing"
+                  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+                  xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://dss.cryptopro.ru/services/2014/06/"
+        >
+    <wsdl:import namespace="http://dss.cryptopro.ru/services/bindings/2014/06/"
+                 location="SignService.policy.wsdl"/>
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://dss.cryptopro.ru/services/2014/06/Imports">
+            <xsd:import schemaLocation="0.xsd"
+                        namespace="http://dss.cryptopro.ru/services/2014/06/"/>
+            <xsd:import schemaLocation="2.xsd"
+                        namespace="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+            <xsd:import schemaLocation="1.xsd"
+                        namespace="http://schemas.microsoft.com/2003/10/Serialization/"/>
+            <xsd:import schemaLocation="3.xsd"
+                        namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="ISignService_EncryptDocument_InputMessage">
+        <wsdl:part name="parameters" element="tns:EncryptDocument"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_EncryptDocument_OutputMessage">
+        <wsdl:part name="parameters" element="tns:EncryptDocumentResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_EncryptDocument_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q1:DssFault" xmlns:q1="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_DecryptDocument_InputMessage">
+        <wsdl:part name="parameters" element="tns:DecryptDocument"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_DecryptDocument_OutputMessage">
+        <wsdl:part name="parameters" element="tns:DecryptDocumentResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_DecryptDocument_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q2:DssFault" xmlns:q2="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_GetDecryptionCertificates_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetDecryptionCertificates"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_GetDecryptionCertificates_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetDecryptionCertificatesResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_GetDecryptionCertificates_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q3:DssFault" xmlns:q3="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_GetDSSAuditRecords_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetDSSAuditRecords"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_GetDSSAuditRecords_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetDSSAuditRecordsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_GetDSSAuditRecords_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q4:DssFault" xmlns:q4="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_SignDocument_InputMessage">
+        <wsdl:part name="parameters" element="tns:SignDocument"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_SignDocument_OutputMessage">
+        <wsdl:part name="parameters" element="tns:SignDocumentResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_SignDocument_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q5:DssFault" xmlns:q5="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_SignDocuments_InputMessage">
+        <wsdl:part name="parameters" element="tns:SignDocuments"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_SignDocuments_OutputMessage">
+        <wsdl:part name="parameters" element="tns:SignDocumentsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_SignDocuments_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q6:DssFault" xmlns:q6="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_GetCertificates_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetCertificates"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_GetCertificates_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetCertificatesResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_GetCertificates_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q7:DssFault" xmlns:q7="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_GetCertificate_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetCertificate"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_GetCertificate_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetCertificateResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_GetCertificate_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q8:DssFault" xmlns:q8="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_SetCertificateProperty_InputMessage">
+        <wsdl:part name="parameters" element="tns:SetCertificateProperty"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_SetCertificateProperty_OutputMessage">
+        <wsdl:part name="parameters" element="tns:SetCertificatePropertyResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_SetCertificateProperty_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q9:DssFault" xmlns:q9="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_SetRequestStatus_InputMessage">
+        <wsdl:part name="parameters" element="tns:SetRequestStatus"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_SetRequestStatus_OutputMessage">
+        <wsdl:part name="parameters" element="tns:SetRequestStatusResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_SetRequestStatus_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q10:DssFault" xmlns:q10="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_InstallCertificateBase64_InputMessage">
+        <wsdl:part name="parameters" element="tns:InstallCertificateBase64"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_InstallCertificateBase64_OutputMessage">
+        <wsdl:part name="parameters" element="tns:InstallCertificateBase64Response"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_InstallCertificateBase64_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q11:DssFault" xmlns:q11="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_InstallCertificateDer_InputMessage">
+        <wsdl:part name="parameters" element="tns:InstallCertificateDer"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_InstallCertificateDer_OutputMessage">
+        <wsdl:part name="parameters" element="tns:InstallCertificateDerResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_InstallCertificateDer_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q12:DssFault" xmlns:q12="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_DeleteCertificate_InputMessage">
+        <wsdl:part name="parameters" element="tns:DeleteCertificate"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_DeleteCertificate_OutputMessage">
+        <wsdl:part name="parameters" element="tns:DeleteCertificateResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_DeleteCertificate_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q13:DssFault" xmlns:q13="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_GetCertificateContent_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetCertificateContent"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_GetCertificateContent_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetCertificateContentResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_GetCertificateContent_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q14:DssFault" xmlns:q14="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_CreateRequest_InputMessage">
+        <wsdl:part name="parameters" element="tns:CreateRequest"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_CreateRequest_OutputMessage">
+        <wsdl:part name="parameters" element="tns:CreateRequestResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_CreateRequest_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q15:DssFault" xmlns:q15="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_CreateRequestEx_InputMessage">
+        <wsdl:part name="parameters" element="tns:CreateRequestEx"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_CreateRequestEx_OutputMessage">
+        <wsdl:part name="parameters" element="tns:CreateRequestExResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_CreateRequestEx_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q16:DssFault" xmlns:q16="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_GetRequests_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetRequests"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_GetRequests_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetRequestsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_GetRequests_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q17:DssFault" xmlns:q17="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_GetRevokeRequests_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetRevokeRequests"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_GetRevokeRequests_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetRevokeRequestsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_GetRevokeRequests_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q18:DssFault" xmlns:q18="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_DeleteRequest_InputMessage">
+        <wsdl:part name="parameters" element="tns:DeleteRequest"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_DeleteRequest_OutputMessage">
+        <wsdl:part name="parameters" element="tns:DeleteRequestResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_DeleteRequest_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q19:DssFault" xmlns:q19="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_GetRequest_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetRequest"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_GetRequest_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetRequestResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_GetRequest_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q20:DssFault" xmlns:q20="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_GetRequestContent_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetRequestContent"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_GetRequestContent_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetRequestContentResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_GetRequestContent_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q21:DssFault" xmlns:q21="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_GetTransactionID_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetTransactionID"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_GetTransactionID_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetTransactionIDResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_GetTransactionID_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q22:DssFault" xmlns:q22="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_GetPolicy_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetPolicy"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_GetPolicy_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetPolicyResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ISignService_GetPolicy_DssFaultFault_FaultMessage">
+        <wsdl:part name="detail" element="q23:DssFault" xmlns:q23="http://dss.cryptopro.ru/services/schemas/2014/06/"/>
+    </wsdl:message>
+    <wsdl:portType name="ISignService">
+        <wsdl:operation name="EncryptDocument">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2014/06/IEncryptService/EncryptDocument"
+                        message="tns:ISignService_EncryptDocument_InputMessage"/>
+            <wsdl:output wsam:Action="http://dss.cryptopro.ru/services/2014/06/IEncryptService/EncryptDocumentResponse"
+                         message="tns:ISignService_EncryptDocument_OutputMessage"/>
+            <wsdl:fault
+                    wsam:Action="http://dss.cryptopro.ru/services/2014/06/IEncryptService/EncryptDocumentDssFaultFault"
+                    name="DssFaultFault" message="tns:ISignService_EncryptDocument_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="DecryptDocument">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2014/06/IEncryptService/DecryptDocument"
+                        message="tns:ISignService_DecryptDocument_InputMessage"/>
+            <wsdl:output wsam:Action="http://dss.cryptopro.ru/services/2014/06/IEncryptService/DecryptDocumentResponse"
+                         message="tns:ISignService_DecryptDocument_OutputMessage"/>
+            <wsdl:fault
+                    wsam:Action="http://dss.cryptopro.ru/services/2014/06/IEncryptService/DecryptDocumentDssFaultFault"
+                    name="DssFaultFault" message="tns:ISignService_DecryptDocument_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetDecryptionCertificates">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2014/06/IEncryptService/GetDecryptionCertificates"
+                        message="tns:ISignService_GetDecryptionCertificates_InputMessage"/>
+            <wsdl:output
+                    wsam:Action="http://dss.cryptopro.ru/services/2014/06/IEncryptService/GetDecryptionCertificatesResponse"
+                    message="tns:ISignService_GetDecryptionCertificates_OutputMessage"/>
+            <wsdl:fault
+                    wsam:Action="http://dss.cryptopro.ru/services/2014/06/IEncryptService/GetDecryptionCertificatesDssFaultFault"
+                    name="DssFaultFault"
+                    message="tns:ISignService_GetDecryptionCertificates_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetDSSAuditRecords">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2014/06/IAuditService/GetDSSAuditRecords"
+                        message="tns:ISignService_GetDSSAuditRecords_InputMessage"/>
+            <wsdl:output wsam:Action="http://dss.cryptopro.ru/services/2014/06/IAuditService/GetDSSAuditRecordsResponse"
+                         message="tns:ISignService_GetDSSAuditRecords_OutputMessage"/>
+            <wsdl:fault
+                    wsam:Action="http://dss.cryptopro.ru/services/2014/06/IAuditService/GetDSSAuditRecordsDssFaultFault"
+                    name="DssFaultFault" message="tns:ISignService_GetDSSAuditRecords_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="SignDocument">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/SignDocument"
+                        message="tns:ISignService_SignDocument_InputMessage"/>
+            <wsdl:output wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/SignDocumentResponse"
+                         message="tns:ISignService_SignDocument_OutputMessage"/>
+            <wsdl:fault wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/SignDocumentDssFaultFault"
+                        name="DssFaultFault" message="tns:ISignService_SignDocument_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="SignDocuments">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/SignDocuments"
+                        message="tns:ISignService_SignDocuments_InputMessage"/>
+            <wsdl:output wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/SignDocumentsResponse"
+                         message="tns:ISignService_SignDocuments_OutputMessage"/>
+            <wsdl:fault wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/SignDocumentsDssFaultFault"
+                        name="DssFaultFault" message="tns:ISignService_SignDocuments_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetCertificates">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/GetCertificates"
+                        message="tns:ISignService_GetCertificates_InputMessage"/>
+            <wsdl:output wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/GetCertificatesResponse"
+                         message="tns:ISignService_GetCertificates_OutputMessage"/>
+            <wsdl:fault wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/GetCertificatesDssFaultFault"
+                        name="DssFaultFault" message="tns:ISignService_GetCertificates_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetCertificate">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/GetCertificate"
+                        message="tns:ISignService_GetCertificate_InputMessage"/>
+            <wsdl:output wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/GetCertificateResponse"
+                         message="tns:ISignService_GetCertificate_OutputMessage"/>
+            <wsdl:fault wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/GetCertificateDssFaultFault"
+                        name="DssFaultFault" message="tns:ISignService_GetCertificate_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="SetCertificateProperty">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/SetCertificateProperty"
+                        message="tns:ISignService_SetCertificateProperty_InputMessage"/>
+            <wsdl:output
+                    wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/SetCertificatePropertyResponse"
+                    message="tns:ISignService_SetCertificateProperty_OutputMessage"/>
+            <wsdl:fault
+                    wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/SetCertificatePropertyDssFaultFault"
+                    name="DssFaultFault" message="tns:ISignService_SetCertificateProperty_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="SetRequestStatus">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/SetRequestStatus"
+                        message="tns:ISignService_SetRequestStatus_InputMessage"/>
+            <wsdl:output wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/SetRequestStatusResponse"
+                         message="tns:ISignService_SetRequestStatus_OutputMessage"/>
+            <wsdl:fault
+                    wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/SetRequestStatusDssFaultFault"
+                    name="DssFaultFault" message="tns:ISignService_SetRequestStatus_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="InstallCertificateBase64">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/InstallCertificateBase64"
+                        message="tns:ISignService_InstallCertificateBase64_InputMessage"/>
+            <wsdl:output
+                    wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/InstallCertificateBase64Response"
+                    message="tns:ISignService_InstallCertificateBase64_OutputMessage"/>
+            <wsdl:fault
+                    wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/InstallCertificateBase64DssFaultFault"
+                    name="DssFaultFault"
+                    message="tns:ISignService_InstallCertificateBase64_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="InstallCertificateDer">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/InstallCertificateDer"
+                        message="tns:ISignService_InstallCertificateDer_InputMessage"/>
+            <wsdl:output
+                    wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/InstallCertificateDerResponse"
+                    message="tns:ISignService_InstallCertificateDer_OutputMessage"/>
+            <wsdl:fault
+                    wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/InstallCertificateDerDssFaultFault"
+                    name="DssFaultFault" message="tns:ISignService_InstallCertificateDer_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteCertificate">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/DeleteCertificate"
+                        message="tns:ISignService_DeleteCertificate_InputMessage"/>
+            <wsdl:output wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/DeleteCertificateResponse"
+                         message="tns:ISignService_DeleteCertificate_OutputMessage"/>
+            <wsdl:fault
+                    wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/DeleteCertificateDssFaultFault"
+                    name="DssFaultFault" message="tns:ISignService_DeleteCertificate_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetCertificateContent">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/GetCertificateContent"
+                        message="tns:ISignService_GetCertificateContent_InputMessage"/>
+            <wsdl:output
+                    wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/GetCertificateContentResponse"
+                    message="tns:ISignService_GetCertificateContent_OutputMessage"/>
+            <wsdl:fault
+                    wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/GetCertificateContentDssFaultFault"
+                    name="DssFaultFault" message="tns:ISignService_GetCertificateContent_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="CreateRequest">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/CreateRequest"
+                        message="tns:ISignService_CreateRequest_InputMessage"/>
+            <wsdl:output wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/CreateRequestResponse"
+                         message="tns:ISignService_CreateRequest_OutputMessage"/>
+            <wsdl:fault wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/CreateRequestDssFaultFault"
+                        name="DssFaultFault" message="tns:ISignService_CreateRequest_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="CreateRequestEx">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/CreateRequestEx"
+                        message="tns:ISignService_CreateRequestEx_InputMessage"/>
+            <wsdl:output wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/CreateRequestExResponse"
+                         message="tns:ISignService_CreateRequestEx_OutputMessage"/>
+            <wsdl:fault wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/CreateRequestExDssFaultFault"
+                        name="DssFaultFault" message="tns:ISignService_CreateRequestEx_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetRequests">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/GetRequests"
+                        message="tns:ISignService_GetRequests_InputMessage"/>
+            <wsdl:output wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/GetRequestsResponse"
+                         message="tns:ISignService_GetRequests_OutputMessage"/>
+            <wsdl:fault wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/GetRequestsDssFaultFault"
+                        name="DssFaultFault" message="tns:ISignService_GetRequests_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetRevokeRequests">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/GetRevokeRequests"
+                        message="tns:ISignService_GetRevokeRequests_InputMessage"/>
+            <wsdl:output wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/GetRevokeRequestsResponse"
+                         message="tns:ISignService_GetRevokeRequests_OutputMessage"/>
+            <wsdl:fault
+                    wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/GetRevokeRequestsDssFaultFault"
+                    name="DssFaultFault" message="tns:ISignService_GetRevokeRequests_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteRequest">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/DeleteRequest"
+                        message="tns:ISignService_DeleteRequest_InputMessage"/>
+            <wsdl:output wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/DeleteRequestResponse"
+                         message="tns:ISignService_DeleteRequest_OutputMessage"/>
+            <wsdl:fault wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/DeleteRequestDssFaultFault"
+                        name="DssFaultFault" message="tns:ISignService_DeleteRequest_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetRequest">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/GetRequest"
+                        message="tns:ISignService_GetRequest_InputMessage"/>
+            <wsdl:output wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/GetRequestResponse"
+                         message="tns:ISignService_GetRequest_OutputMessage"/>
+            <wsdl:fault wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/GetRequestDssFaultFault"
+                        name="DssFaultFault" message="tns:ISignService_GetRequest_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetRequestContent">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/GetRequestContent"
+                        message="tns:ISignService_GetRequestContent_InputMessage"/>
+            <wsdl:output wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/GetRequestContentResponse"
+                         message="tns:ISignService_GetRequestContent_OutputMessage"/>
+            <wsdl:fault
+                    wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/GetRequestContentDssFaultFault"
+                    name="DssFaultFault" message="tns:ISignService_GetRequestContent_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetTransactionID">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/GetTransactionID"
+                        message="tns:ISignService_GetTransactionID_InputMessage"/>
+            <wsdl:output wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/GetTransactionIDResponse"
+                         message="tns:ISignService_GetTransactionID_OutputMessage"/>
+            <wsdl:fault
+                    wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/GetTransactionIDDssFaultFault"
+                    name="DssFaultFault" message="tns:ISignService_GetTransactionID_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetPolicy">
+            <wsdl:input wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/GetPolicy"
+                        message="tns:ISignService_GetPolicy_InputMessage"/>
+            <wsdl:output wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/GetPolicyResponse"
+                         message="tns:ISignService_GetPolicy_OutputMessage"/>
+            <wsdl:fault wsam:Action="http://dss.cryptopro.ru/services/2014/06/ISignService/GetPolicyDssFaultFault"
+                        name="DssFaultFault" message="tns:ISignService_GetPolicy_DssFaultFault_FaultMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:service name="SignService">
+        <wsdl:port name="WSHttpBinding_ISignService" binding="i0:WSHttpBinding_ISignService">
+            <soap12:address location="http://stenddss.cryptopro.ru/aeroflotss/SignService.svc/token"/>
+            <wsa10:EndpointReference>
+                <wsa10:Address>http://stenddss.cryptopro.ru/aeroflotss/SignService.svc/token</wsa10:Address>
+            </wsa10:EndpointReference>
+        </wsdl:port>
+        <wsdl:port name="WSHttpBinding_ISignService1" binding="i0:WSHttpBinding_ISignService1">
+            <soap12:address location="http://stenddss.cryptopro.ru/aeroflotss/SignServiceR.svc/token/nosc"/>
+            <wsa10:EndpointReference>
+                <wsa10:Address>http://stenddss.cryptopro.ru/aeroflotss/SignServiceR.svc/token/nosc</wsa10:Address>
+            </wsa10:EndpointReference>
+        </wsdl:port>
+        <wsdl:port name="WSFederationHttpBinding_ISignService" binding="i0:WSFederationHttpBinding_ISignService">
+            <soap12:address location="http://stenddss.cryptopro.ru/aeroflotss/SignService.svc/federation"/>
+            <wsa10:EndpointReference>
+                <wsa10:Address>http://stenddss.cryptopro.ru/aeroflotss/SignService.svc/federation</wsa10:Address>
+            </wsa10:EndpointReference>
+        </wsdl:port>
+        <wsdl:port name="WSFederationHttpBinding_ISignService1" binding="i0:WSFederationHttpBinding_ISignService1">
+            <soap12:address location="http://stenddss.cryptopro.ru/aeroflotss/SignService.svc/federation/nosc"/>
+            <wsa10:EndpointReference>
+                <wsa10:Address>http://stenddss.cryptopro.ru/aeroflotss/SignService.svc/federation/nosc</wsa10:Address>
+            </wsa10:EndpointReference>
+        </wsdl:port>
+        <wsdl:port name="WSHttpBinding_ISignService2" binding="i0:WSHttpBinding_ISignService2">
+            <soap12:address location="https://stenddss/aeroflotss/SignService.svc/token/transport"/>
+            <wsa10:EndpointReference>
+                <wsa10:Address>https://stenddss/aeroflotss/SignService.svc/token/transport</wsa10:Address>
+            </wsa10:EndpointReference>
+        </wsdl:port>
+        <wsdl:port name="WSHttpBinding_ISignService3" binding="i0:WSHttpBinding_ISignService3">
+            <soap12:address location="https://stenddss/aeroflotss/SignServiceR.svc/token/transport/nosc"/>
+            <wsa10:EndpointReference>
+                <wsa10:Address>https://stenddss/aeroflotss/SignServiceR.svc/token/transport/nosc</wsa10:Address>
+            </wsa10:EndpointReference>
+        </wsdl:port>
+        <wsdl:port name="WSFederationHttpBinding_ISignService2" binding="i0:WSFederationHttpBinding_ISignService2">
+            <soap12:address location="https://stenddss/aeroflotss/SignService.svc/federation/transport"/>
+            <wsa10:EndpointReference>
+                <wsa10:Address>https://stenddss/aeroflotss/SignService.svc/federation/transport</wsa10:Address>
+            </wsa10:EndpointReference>
+        </wsdl:port>
+        <wsdl:port name="WSFederationHttpBinding_ISignService3" binding="i0:WSFederationHttpBinding_ISignService3">
+            <soap12:address location="https://stenddss/aeroflotss/SignService.svc/federation/transport/nosc"/>
+            <wsa10:EndpointReference>
+                <wsa10:Address>https://stenddss/aeroflotss/SignService.svc/federation/transport/nosc</wsa10:Address>
+            </wsa10:EndpointReference>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

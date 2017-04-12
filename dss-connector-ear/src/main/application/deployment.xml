@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<appdeployment:Deployment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
+                          xmlns:appdeployment="http://www.ibm.com/websphere/appserver/schemas/5.0/appdeployment.xmi"
+                          xmi:id="Deployment_1">
+
+    <deployedObject xmi:type="appdeployment:ApplicationDeployment" xmi:id="ApplicationDeployment_1"
+                    startingWeight="1">
+        <!--
+            Приложение использует альтернативную реализацию JAX-WS - Metro,
+            поэтому порядок загрузки классов инвертирован.
+        -->
+        <modules xmi:type="appdeployment:WebModuleDeployment" xmi:id="WebDeployment_1" startingWeight="1"
+                 uri="lecm-sts.war" classloaderMode="PARENT_LAST"/>
+        <classloader xmi:id="Classloader_1" mode="PARENT_LAST"/>
+    </deployedObject>
+
+</appdeployment:Deployment>

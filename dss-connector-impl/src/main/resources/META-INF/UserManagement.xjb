@@ -1,0 +1,36 @@
+<jxb:bindings version="1.0" xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+              schemaLocation="UserManagement.3.xsd">
+    <!--
+    Т.к. и SignService.wsdl и UserManagement.wsdl используют один namespace ("http://dss.cryptopro.ru/services/schemas/2014/06/"), где существуют различные типы данных,
+    То, без явного указания, wsimport перетирает ObjectFactory при последовательной генерации классов.
+    Чтобы этого не происходило, для типов этого namespace-a из UserManagement.wsdl объявляется отдельный package
+    -->
+    <!--    <jxb:bindings node="//xsd:simpleType[@name='MfaPolicy']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.xml.bind.annotation.XmlTransient" />
+            </annox:annotate>
+        </jxb:bindings>
+        <jxb:bindings node="//xsd:element[@name='MfaPolicy']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.xml.bind.annotation.XmlTransient" />
+            </annox:annotate>
+        </jxb:bindings>-->
+    <jxb:bindings node="/*[local-name()='schema']">
+        <jxb:schemaBindings>
+            <jxb:package name="ru.cryptopro.dss.services.schemas._2014._06.userManagement"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+<!--    <jxb:bindings node="//xsd:element[@name='Objectfactory']">
+        <jxb:class name="ReportServicesObjectFactory" />
+    </jxb:bindings>-->
+<!--    <jxb:bindings node="//xsd:simpleType[@name='MfaPolicy']">
+        <jxb:class name="MfaPoicy_Double"/>
+    </jxb:bindings>-->
+    <!--    <jxb:bindings node="/xsd:schema">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <jxb:class name="MyObjectFactory"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+        </jxb:bindings>-->
+</jxb:bindings>

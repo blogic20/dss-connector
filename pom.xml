@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <groupId>ru.blogic.dss</groupId>
+    <artifactId>dss-connector-parent</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>dss-connector-commons</module>
+        <module>lecm-sts</module>
+        <module>dss-connector-impl</module>
+        <module>dss-connector-ear</module>
+        <module>dss-connector-api</module>
+        <module>dss-connector-integration-tests</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                    <fork>true</fork>
+                    <compilerVersion>1.6</compilerVersion>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.openejb</groupId>
+                <artifactId>javaee-api</artifactId>
+                <version>6.0-6</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.metro</groupId>
+                <artifactId>webservices-rt</artifactId>
+                <version>2.3.1</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.glassfish.metro</groupId>
+                        <artifactId>webservices-api</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>com.sun.xml.parsers</groupId>
+                <artifactId>jaxp-ri</artifactId>
+                <version>1.4.5</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>jaxp-api</artifactId>
+                        <groupId>javax.xml.parsers</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>

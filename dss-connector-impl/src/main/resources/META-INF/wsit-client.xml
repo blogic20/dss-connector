@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" name="mainclientconfig">
+    <import location="LECM-STS.wsdl" namespace="http://docs.oasis-open.org/ws-sx/ws-trust/200512/"/>
+    <import location="SignService.wsdl" namespace="http://dss.cryptopro.ru/services/2014/06/"/>
+    <import location="Active.wsdl" namespace="http://schemas.microsoft.com/ws/2008/06/identity/securitytokenservice"/>
+    <import location="UserManagement.wsdl" namespace="http://dss.cryptopro.ru/services/2015/12/"/>
+</definitions>

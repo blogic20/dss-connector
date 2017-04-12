@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.1 (UNKNOWN_BRANCH-false; 2015-01-15T16:53:43+0100) JAXWS-RI/2.2.10 JAXWS-API/2.2.11 JAXB-RI/2.2.10-b140802.1033 JAXB-API/2.2.12-b140109.1041 svn-revision#unknown. -->
+<wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+                  xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsp="http://www.w3.org/ns/ws-policy"
+                  xmlns:tns="http://docs.oasis-open.org/ws-sx/ws-trust/200512/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:jaxws="http://java.sun.com/xml/ns/jaxws"
+                  xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702"
+                  xmlns:wst="http://docs.oasis-open.org/ws-sx/ws-trust/200512"
+                  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+                  targetNamespace="http://docs.oasis-open.org/ws-sx/ws-trust/200512/"
+                  xmlns:sc1="http://schemas.sun.com/2006/03/wss/client"
+                  xmlns:wspp="http://java.sun.com/xml/ns/wsit/policy">
+
+<wsdl:types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/ws-sx/ws-trust/200512">
+
+        <xsd:complexType name="AbstractRequestSecurityTokenType">
+            <xsd:sequence>
+                <xsd:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+            <xsd:attribute name="Context" type="xsd:anyURI" use="optional"/>
+            <xsd:anyAttribute namespace="##other" processContents="lax"/>
+        </xsd:complexType>
+
+        <xsd:element name="RequestSecurityToken" type="wst:AbstractRequestSecurityTokenType"/>
+
+        <xsd:element name="RequestSecurityTokenResponseCollection"
+                     type="wst:RequestSecurityTokenResponseCollectionType"/>
+        <xsd:complexType name="RequestSecurityTokenResponseCollectionType">
+            <xsd:sequence>
+                <xsd:element ref="wst:RequestSecurityTokenResponse" minOccurs="1"
+                             maxOccurs="unbounded"/>
+            </xsd:sequence>
+            <xsd:anyAttribute namespace="##other" processContents="lax"/>
+        </xsd:complexType>
+
+    </xsd:schema>
+</wsdl:types>
+
+<wsdl:message name="IssueToken_InputMessage">
+    <wsdl:part name="rstMessage" element="wst:RequestSecurityToken"/>
+</wsdl:message>
+
+<wsdl:message name="IssueToken_OutputMessage">
+    <wsdl:part name="IssueTokenResult" element="wst:RequestSecurityTokenResponseCollection"/>
+</wsdl:message>
+
+<wsdl:portType name="LecmSTS_service">
+    <wsdl:operation name="IssueToken">
+        <wsdl:input wsam:Action="http://docs.oasis-open.org/ws-sx/ws-trust/200512/RST/Issue"
+                    message="tns:IssueToken_InputMessage"/>
+        <wsdl:output wsam:Action="http://docs.oasis-open.org/ws-sx/ws-trust/200512/RSTRC/IssueFinal"
+                     message="tns:IssueToken_OutputMessage"/>
+    </wsdl:operation>
+</wsdl:portType>
+
+<wsdl:binding name="LecmSTS_port_binding" type="tns:LecmSTS_service">
+    <wsp:PolicyReference URI="#DSS_policy"/>
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="IssueToken">
+        <soap12:operation soapAction="http://docs.oasis-open.org/ws-sx/ws-trust/200512/RST/Issue"
+                          style="document"/>
+        <wsdl:input>
+            <soap:body use="literal"/>
+        </wsdl:input>
+        <wsdl:output>
+            <soap:body use="literal"/>
+        </wsdl:output>
+    </wsdl:operation>
+</wsdl:binding>
+
+<wsp:Policy wsu:Id="DSS_policy">
+    <wsp:ExactlyOne>
+        <wsp:All>
+            <wsp:All>
+                <sc1:TrustStore wspp:visibility="private" peeralias="lecm-sts.cert"
+                               callbackHandler="ru.blogic.dss.common.callback.KeyStoreCallbackHandler"/>
+                <sc1:CallbackHandlerConfiguration wspp:visibility="private">
+                    <!-- Данные логин и пароль не используются STS, реальную аутентификацию осуществляет сервер приложений -->
+                    <sc1:CallbackHandler name="usernameHandler"
+                                         classname="ru.blogic.dss.UsernameCallbackHandler"/>
+                    <sc1:CallbackHandler name="passwordHandler" default="TOP_SECRET"/>
+                </sc1:CallbackHandlerConfiguration>
+            </wsp:All>
+            <wsam:Addressing>
+                <wsp:Policy>
+                    <wsam:AnonymousResponses/>
+                </wsp:Policy>
+            </wsam:Addressing>
+            <sp:SymmetricBinding>
+                <wsp:Policy>
+                    <sp:ProtectionToken>
+                        <wsp:Policy>
+                            <sp:X509Token
+                                    sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/Never">
+                            </sp:X509Token>
+                        </wsp:Policy>
+                    </sp:ProtectionToken>
+                </wsp:Policy>
+            </sp:SymmetricBinding>
+            <sp:SupportingTokens>
+                <wsp:Policy>
+                    <sp:UsernameToken
+                            sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/AlwaysToRecipient">
+                    </sp:UsernameToken>
+                </wsp:Policy>
+            </sp:SupportingTokens>
+        </wsp:All>
+    </wsp:ExactlyOne>
+</wsp:Policy>
+
+<wsdl:service name="LECM_SecurityTokenService">
+    <wsdl:port binding="tns:LecmSTS_port_binding" name="LecmSTS_port">
+        <!-- Location will be substituted by Metro -->
+        <soap12:address location="http://TOBECHANGED:9080/LECM-STS/STS"/>
+        <jaxws:bindings>
+            <jaxws:provider>true</jaxws:provider>
+        </jaxws:bindings>
+    </wsdl:port>
+</wsdl:service>
+
+</wsdl:definitions>
+

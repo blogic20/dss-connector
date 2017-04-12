@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoints version="2.0" xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime">
+    
+    <endpoint 
+           name="MEXEndpoint"
+           implementation="com.sun.xml.ws.mex.server.MEXEndpoint"
+           binding="http://java.sun.com/xml/ns/jaxws/2003/05/soap/bindings/HTTP/"
+           url-pattern="/STS/mex"/>
+  
+    <endpoint
+           name="DoubleItSTS Implementation"
+           implementation="ru.blogic.sts.LecmStsImpl"
+           wsdl="WEB-INF/wsdl/LECM-STS.wsdl"
+           binding="http://java.sun.com/xml/ns/jaxws/2003/05/soap/bindings/HTTP/"
+           url-pattern="/STS"/>
+
+</endpoints>
